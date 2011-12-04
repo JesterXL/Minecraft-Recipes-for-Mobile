@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="RecipeView"
+		creationComplete="init()">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.jxl.minecraftrecipes.vo.IngredientVO;
+			import com.jxl.minecraftrecipes.vo.RecipeVO;
+			
+			private var _recipe:RecipeVO;
+			private var recipeDirty:Boolean = false;
+			
+			public function get recipe():RecipeVO { return _recipe; }
+			public function set recipe(value:RecipeVO):void
+			{
+				if(value !== _recipe)
+				{
+					_recipe = value;
+					recipeDirty = true;
+					invalidateProperties();
+				}
+			}
+			
+			protected override function commitProperties():void
+			{
+				super.commitProperties();
+				
+				var row:int;
+				var col:int;
+				var image:Image;
+				if(_recipe)
+				{
+					itemImage.source 			= _recipe.image;
+					
+					valueBlackTextField.text 	= _recipe.value.toString();
+					valueWhiteTextField.text 	= _recipe.value.toString();
+					
+					for(row = 0; row < 3; row++)
+					{
+						for(col = 0; col < 3; col++)
+						{
+							var ingredient:IngredientVO = _recipe.grid[row][col];
+							image = this["image_" + row + "_" + col] as Image;
+							if(ingredient)
+							{
+								image.source = ingredient.image;
+							}
+							else
+							{
+								image.source = null;
+							}
+						}
+					}
+				}
+				else
+				{
+					valueBlackTextField.text 	= "";
+					valueWhiteTextField.text 	= "";
+					
+					for(row = 0; row < 3; row++)
+					{
+						for(col = 0; col < 3; col++)
+						{
+							image = this["image_" + row + "_" + col] as Image;
+							image.source = null;
+						}
+					}
+				}
+			}
+			
+			private function init():void
+			{
+				recipe = data as RecipeVO;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:navigationContent>
+		<s:Button label="&lt;&lt; Back" click="navigator.popView()" />
+	</s:navigationContent>
+	
+	<s:Group>
+		<s:Image source="@Embed(source='/assets/images/Grid.png')"
+				 scaleX="2" scaleY="2"/>
+		<s:Group x="306" y="76" width="96" height="96">
+			<!--
+			<s:Rect x="4" y="4" width="96" height="96">
+				<s:fill>
+					<s:SolidColor color="#FF0000" alpha=".2" />
+				</s:fill>
+			</s:Rect>
+			-->
+			<s:Image id="itemImage" horizontalCenter="0" scaleX="2" scaleY="2"
+					 source="@Embed(source='/assets/images/Cobblestone.png')"
+					 verticalCenter="0"/>
+			<s:Label id="valueBlackTextField" x="64" y="57" color="#000000" fontFamily="Minecraft" />
+			<s:Label id="valueWhiteTextField" x="61" y="54" color="#FFFFFF" fontFamily="Minecraft" />
+			
+		</s:Group>
+		
+		<s:Image id="image_0_0" x="21" y="21" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_0_1" x="91" y="21" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_0_2" x="165" y="21" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_1_0" x="21" y="92" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_1_1" x="91" y="92" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_1_2" x="165" y="92" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_2_0" x="21" y="164" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_2_1" x="91" y="164" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+		<s:Image id="image_2_2" x="165" y="164" scaleX="2" scaleY="2"
+				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				
+	</s:Group>
+</s:View>
