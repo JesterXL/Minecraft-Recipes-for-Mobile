@@ -275,8 +275,32 @@ package com.jxl.minecraftrecipes
 							new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png"), null,
 							new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png"), null]);
 			
+			addRecipe("Bookshelf",
+						"Used as decoration, or to give an Enchantment Table knowledge.",
+						"Wooden Plank + Books",
+						IMAGE_PATH + "Bookshelf.png",
+						1,
+						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
+							new IngredientVO(IMAGE_PATH + "Book.png"), new IngredientVO(IMAGE_PATH + "Book.png"), new IngredientVO(IMAGE_PATH + "Book.png"), 
+							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png")]);
+			addRecipe("Sandstone",
+						"Used as a building material. Is not influenced by gravity like normal Sand.",
+						"Sand",
+						IMAGE_PATH + "Sandstone.png",
+						1,
+						[null, null, null,
+							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), null,
+							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), null]);
 			
 			
+			addRecipe("Jack-O-Lantern",
+						"Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
+						"Pumpkin + Torch",
+						IMAGE_PATH + "Jack-O-Lantern.png",
+						1,
+						[null, null, null,
+							null, new IngredientVO(IMAGE_PATH + "Pumpkin.png"), null,
+							null, new IngredientVO(IMAGE_PATH + "Torch.png"), null]);
 			return true;
 		}
 		
