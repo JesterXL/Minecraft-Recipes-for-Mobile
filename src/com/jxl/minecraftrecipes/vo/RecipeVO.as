@@ -8,9 +8,9 @@ package com.jxl.minecraftrecipes.vo
 		public var title:String;
 		public var description:String;
 		public var ingredients:String;
-		public var image:String;
+		public var images:Array;
 		public var value:uint;
-		public var grid:Array;
+		public var grids:Array;
 		
 		public function RecipeVO()
 		{

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" title="RecipeView"
-		creationComplete="init()">
+		creationComplete="init()"
+		removing="onRemoving()">
 	
 	<fx:Script>
 		<![CDATA[
@@ -10,12 +11,15 @@
 			
 			private var _recipe:RecipeVO;
 			private var recipeDirty:Boolean = false;
+			private var imageTimer:Timer = new Timer(2000);
+			private var currentImage:int = 0;
 			
 			public function get recipe():RecipeVO { return _recipe; }
 			public function set recipe(value:RecipeVO):void
 			{
 				if(value !== _recipe)
 				{
+					imageTimer.stop();
 					_recipe = value;
 					recipeDirty = true;
 					invalidateProperties();
@@ -26,44 +30,53 @@
 			{
 				super.commitProperties();
 				
-				var row:int;
-				var col:int;
-				var image:Image;
-				if(_recipe)
+				if(recipeDirty)
 				{
-					itemImage.source 			= _recipe.image;
-					
-					valueBlackTextField.text 	= _recipe.value.toString();
-					valueWhiteTextField.text 	= _recipe.value.toString();
-					
-					for(row = 0; row < 3; row++)
+					recipeDirty = false;
+				
+					var row:int;
+					var col:int;
+					var image:Image;
+					if(_recipe)	
 					{
-						for(col = 0; col < 3; col++)
+						if(_recipe.images.length > 1)
 						{
-							var ingredient:IngredientVO = _recipe.grid[row][col];
-							image = this["image_" + row + "_" + col] as Image;
-							if(ingredient)
+							currentImage = 0;
+							imageTimer.reset();
+							imageTimer.start();
+							trace("Starting timer");
+						}
+						
+						
+						valueBlackTextField.text 	= _recipe.value.toString();
+						valueWhiteTextField.text 	= _recipe.value.toString();
+						
+						if(_recipe.value < 2)
+						{
+							valueBlackTextField.visible = false;
+							valueWhiteTextField.visible = false;
+						}
+						else
+						{
+							valueBlackTextField.visible = true;
+							valueWhiteTextField.visible = true;
+						}
+						
+						
+						changeImages();
+					}
+					else
+					{
+						valueBlackTextField.text 	= "";
+						valueWhiteTextField.text 	= "";
+						
+						for(row = 0; row < 3; row++)
+						{
+							for(col = 0; col < 3; col++)
 							{
-								image.source = ingredient.image;
-							}
-							else
-							{
+								image = this["image_" + row + "_" + col] as Image;
 								image.source = null;
 							}
-						}
-					}
-				}
-				else
-				{
-					valueBlackTextField.text 	= "";
-					valueWhiteTextField.text 	= "";
-					
-					for(row = 0; row < 3; row++)
-					{
-						for(col = 0; col < 3; col++)
-						{
-							image = this["image_" + row + "_" + col] as Image;
-							image.source = null;
 						}
 					}
 				}
@@ -72,6 +85,63 @@
 			private function init():void
 			{
 				recipe = data as RecipeVO;
+				imageTimer.addEventListener(TimerEvent.TIMER, onTick);
+			}
+			
+			private function onRemoving():void
+			{
+				if(imageTimer)
+				{
+					imageTimer.stop();
+					imageTimer.removeEventListener(TimerEvent.TIMER, onTick);
+				}
+			}
+			
+			private function onTick(event:TimerEvent):void
+			{
+				if(_recipe && _recipe.images && _recipe.images.length > 1)
+				{
+					if(currentImage + 1 < _recipe.images.length)
+					{
+						currentImage++;
+					}
+					else
+					{
+						currentImage = 0;
+					}
+				}
+				changeImages();
+			}
+			
+			private function changeImages():void
+			{
+			
+				itemImage.source 			= _recipe.images[currentImage];
+				var currentGrid:Array 		= _recipe.grids[currentImage];
+				var row:int;
+				var col:int;
+				var image:Image;
+				for(row = 0; row < 3; row++)
+				{
+					for(col = 0; col < 3; col++)
+					{
+						var ingredient:IngredientVO = currentGrid[row][col];
+						image = this["image_" + row + "_" + col] as Image;
+						if(ingredient)
+						{
+							image.source = ingredient.image;
+						}
+						else
+						{
+							image.source = null;
+						}
+					}
+				}
+			}
+			
+			private function stopTimer():void
+			{
+				imageTimer.stop();
 			}
 			
 		]]>
@@ -94,30 +164,40 @@
 			-->
 			<s:Image id="itemImage" horizontalCenter="0" scaleX="2" scaleY="2"
 					 source="@Embed(source='/assets/images/Cobblestone.png')"
-					 verticalCenter="0"/>
+					 verticalCenter="0"
+					 scaleMode="letterbox"/>
 			<s:Label id="valueBlackTextField" x="64" y="57" color="#000000" fontFamily="Minecraft" />
 			<s:Label id="valueWhiteTextField" x="61" y="54" color="#FFFFFF" fontFamily="Minecraft" />
 			
 		</s:Group>
 		
 		<s:Image id="image_0_0" x="21" y="21" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_0_1" x="91" y="21" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_0_2" x="165" y="21" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_1_0" x="21" y="92" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_1_1" x="91" y="92" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_1_2" x="165" y="92" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_2_0" x="21" y="164" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_2_1" x="91" y="164" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 		<s:Image id="image_2_2" x="165" y="164" scaleX="2" scaleY="2"
-				 source="@Embed(source='/assets/images/Cobblestone.png')"/>
+				 source="@Embed(source='/assets/images/Cobblestone.png')"
+				 scaleMode="letterbox"/>
 				
 	</s:Group>
 </s:View>

@@ -8,9 +8,13 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import assets.images.Icons;
+			
 			import com.jxl.minecraftrecipes.Constants;
 			
 			import mx.collections.ArrayCollection;
+			
+			private var depend:Icons;
 			
 			[Bindable]
 			public var allData:ArrayCollection;
@@ -37,7 +41,8 @@
 			<fx:Component>
 				<s:IconItemRenderer 
 					label="{data.title}"
-					decorator="{data.image}"
+					decorator="{data.images[0]}"
+					iconScaleMode="letterbox"
 					/>
 			</fx:Component>
 		</s:itemRenderer>
