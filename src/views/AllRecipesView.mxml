@@ -21,6 +21,7 @@
 			
 			private function init():void
 			{
+				Constants.initializeRecipes();
 				allData = Constants.allRecipes;
 			}
 			
