@@ -92,6 +92,10 @@ package com.jxl.minecraftrecipes
 		private static const MINECART:IngredientVO = new IngredientVO(IMAGE_PATH + "Minecart.png");
 		private static const STONE_PRESSURE_PLATE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Pressure_Plate.png");
 		private static const STONE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone.png");
+		private static const BOW:IngredientVO = new IngredientVO(IMAGE_PATH + "Bow.png");
+		private static const REDSTONE_TORCH:IngredientVO = new IngredientVO(IMAGE_PATH + "Redstone_Torch.png");
+		private static const PISTON:IngredientVO = new IngredientVO(IMAGE_PATH + "Piston.png");
+		private static const SLIMEBALL:IngredientVO = new IngredientVO(IMAGE_PATH + "Slimeball.png");
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -752,7 +756,56 @@ package com.jxl.minecraftrecipes
 						[null, null, null,
 							null, STICK, null,
 							null, COBBLESTONE, null]);
-							
+			
+			
+			addRecipe("Note Block",
+						"Plays a note when triggered. Right click it to change the pitch of the note. Placing this on top of different blocks changes its type of instrument.",
+						"Wooden Planks + Redstone Dust",
+						IMAGE_PATH + "Note_Block.png",
+						1,
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							WOODEN_PLANK, REDSTONE_DUST, WOODEN_PLANK,
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK]);
+			
+			addRecipe("Jukebox",
+						"Plays Music Discs.",
+						"Wooden Planks + Diamond Gem",
+						IMAGE_PATH + "Jukebox.png",
+						1,
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							WOODEN_PLANK, DIAMOND_GEM, WOODEN_PLANK,
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK]);
+			
+			addRecipe("Dispenser",
+						"Used to hold and shoot out items in a random order when given a Redstone charge.",
+						"Cobblestone + Redstone Dust + Bow",
+						IMAGE_PATH + "Dispenser.png",
+						1,
+						[COBBLESTONE, COBBLESTONE, COBBLESTONE,
+							COBBLESTONE, BOW, COBBLESTONE,
+							COBBLESTONE, REDSTONE_DUST, COBBLESTONE]);
+			
+			addRecipe("Redstone Repeater",
+						"Used in redstone circuits as repeater, a delayer, and/or a diode.",
+						"Stone + Redstone Dust + Redstone Torch",
+						IMAGE_PATH + "Redstone_Repeater.png",
+						1,
+						[null, null, null,
+							REDSTONE_TORCH, REDSTONE_DUST, REDSTONE_TORCH,
+							STONE, STONE, STONE]);
+			
+			addRecipe("Piston",
+						"Pushes blocks and entities.",
+						"Cobblestone + Redstone Dust + Wooden Planks + Iron Ingot",
+						IMAGE_PATH + "Piston.png",
+						1,
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							COBBLESTONE, IRON_INGOT, COBBLESTONE,
+							COBBLESTONE, REDSTONE_DUST, COBBLESTONE]);
+			
+			addRecipe("Sticky Piston",
+						"Pushes blocks and entities, and will pull back the block next to the end when retracted.",
+						
 			
 			return true;
 		}
