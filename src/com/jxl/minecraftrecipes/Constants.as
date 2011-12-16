@@ -23,7 +23,7 @@ package com.jxl.minecraftrecipes
 			recipe.title 						= title;
 			recipe.description					= description;
 			recipe.ingredients					= ingredients;
-			if(imageOrImages is String)
+			if(imageOrImages is IngredientVO)
 			{
 				recipe.images					= [imageOrImages];
 			}
@@ -96,6 +96,18 @@ package com.jxl.minecraftrecipes
 		private static const REDSTONE_TORCH:IngredientVO = new IngredientVO(IMAGE_PATH + "Redstone_Torch.png");
 		private static const PISTON:IngredientVO = new IngredientVO(IMAGE_PATH + "Piston.png");
 		private static const SLIMEBALL:IngredientVO = new IngredientVO(IMAGE_PATH + "Slimeball.png");
+		private static const BROWN_MUSHROOM:IngredientVO = new IngredientVO(IMAGE_PATH + "Brown_Mushroom.png");
+		private static const RED_MUSHROOM:IngredientVO = new IngredientVO(IMAGE_PATH + "Red_Mushroom.png");
+		private static const BOWL:IngredientVO = new IngredientVO(IMAGE_PATH + "Bowl.png");
+		private static const WHEAT:IngredientVO = new IngredientVO(IMAGE_PATH + "Wheat.png");
+		private static const BREAD:IngredientVO = new IngredientVO(IMAGE_PATH + "Bread.png");
+		private static const SUGAR_CANE:IngredientVO = new IngredientVO(IMAGE_PATH + "Sugar_Cane.png");
+		private static const SUGAR:IngredientVO = new IngredientVO(IMAGE_PATH + "Sugar.png");
+		private static const CAKE:IngredientVO = new IngredientVO(IMAGE_PATH + "Cake.png");
+		private static const MILK:IngredientVO = new IngredientVO(IMAGE_PATH + "Milk.png");
+		private static const EGG:IngredientVO = new IngredientVO(IMAGE_PATH + "Egg.png");
+		private static const COOKIE
+		
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -805,7 +817,66 @@ package com.jxl.minecraftrecipes
 			
 			addRecipe("Sticky Piston",
 						"Pushes blocks and entities, and will pull back the block next to the end when retracted.",
+						"Piston + Slimeball",
+						IMAGE_PATH + "Sticky_Piston.png",
+						1,
+						[null, null, null,
+							null, SLIMEBALL, null,
+							null, PISTON, null]);
+			
+			addRecipe("Bowls",
+						"Used to hold mushroom stew. The player keeps the bowl when they eat the stew. Also used to milk a Mooshroom.",
+						"Wooden Planks",
+						IMAGE_PATH + "Bowl.png",
+						4,
+						[null, null, null,
+							WOODEN_PLANK, null, WOODEN_PLANK,
+							null, WOODEN_PLANK, null]);
+			
+			addRecipe("Mushroom Stew",
+						"Restores 4. Bowl is re-usable.",
+						IMAGE_PATH + "Stew.png",
+						1,
+						[null, BROWN_MUSHROOM, null,
+							null, RED_MUSHROOM, null,
+							null, BOWL, null],
+						[null, RED_MUSHROOM, null,
+							null, BROWN_MUSHROOM, null,
+							null, BOWL, null]);
+			
+			addRecipe("Bread",
+						"Restores 3.",
+						"Wheat",
+						IMAGE_PATH + "Bread.png",
+						1,
+						[null, null, null,
+							null, null, null,
+							WHEAT, WHEAT, WHEAT]);
+			
+			addRecipe("Sugar",
+						"Is used in the cake recipe.",
+						"Sugar Cane",
+						SUGAR,
+						1,
+						[null, null, null,
+							null, null, null,
+							null, SUGAR_CANE, null]);
+			
+			addRecipe("Cake",
+						"Restores 2 on every use. Can be used 6 times, for a total of 9 restored. The buckets are not lost in the process.",
+						"Wheat + Sugar + Egg + Milk",
+						CAKE,
+						1,
+						[MILK, MILK, MILK,
+							SUGAR, EGG, SUGAR,
+							WHEAT, WHEAT, WHEAT]);
+			
+			addRecipe("Cookie",
+						"Restores 1/2 per Cookie.",
+						"Wheat + Cocoa Beans",
+						COOKE
 						
+							
 			
 			return true;
 		}

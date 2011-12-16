@@ -44,7 +44,6 @@
 							currentImage = 0;
 							imageTimer.reset();
 							imageTimer.start();
-							trace("Starting timer");
 						}
 						
 						
@@ -116,7 +115,7 @@
 			private function changeImages():void
 			{
 			
-				itemImage.source 			= _recipe.images[currentImage];
+				itemImage.source 			= IngredientVO(_recipe.images[currentImage]).image;
 				var currentGrid:Array 		= _recipe.grids[currentImage];
 				var row:int;
 				var col:int;
