@@ -106,8 +106,20 @@ package com.jxl.minecraftrecipes
 		private static const CAKE:IngredientVO = new IngredientVO(IMAGE_PATH + "Cake.png");
 		private static const MILK:IngredientVO = new IngredientVO(IMAGE_PATH + "Milk.png");
 		private static const EGG:IngredientVO = new IngredientVO(IMAGE_PATH + "Egg.png");
-		private static const COOKIE
-		
+		private static const COOKIE:IngredientVO = new IngredientVO(IMAGE_PATH + "Cookie.png");
+		private static const COCOA_BEANS:IngredientVO = new IngredientVO(IMAGE_PATH + "Cocoa_Beans.png");
+		private static const GOLDEN_APPLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Golden_Apple.png");
+		private static const GOLD_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Block.png");
+		private static const MELON_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Melon_Block.png");
+		private static const MELON_SLICE:IngredientVO = new IngredientVO(IMAGE_PATH + "Melon_Slice.png");
+		private static const MELON_SEEDS:IngredientVO = new IngredientVO(IMAGE_PATH + "Melon_Seeds.png");
+		private static const PUMPKIN_SEEDS:IngredientVO = new IngredientVO(IMAGE_PATH + "Pumpkin_Seeds.png");
+		private static const PUMPKIN:IngredientVO = new IngredientVO(IMAGE_PATH + "Pumpkin.png");
+		private static const LAPIS_LAZULI_GEM:IngredientVO = new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Gem).png");
+		private static const LAPIS_LAZULI_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Block).png");
+		private static const IRON_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_(Block).png");
+		private static const DIAMOND_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_(Block).png");
+		private static const PAINTING:IngredientVO = new IngredientVO(IMAGE_PATH + "Painting.png");
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -874,9 +886,79 @@ package com.jxl.minecraftrecipes
 			addRecipe("Cookie",
 						"Restores 1/2 per Cookie.",
 						"Wheat + Cocoa Beans",
-						COOKE
+						COOKIE,
+						1,
+						[null, null, null,
+							null, null, null,
+							WHEAT, COCOA_BEANS, WHEAT]);
 						
-							
+			addRecipe("Golden Apple",
+						"Restores 5, and also heals hearts automatically. It is the only food that you can eat with a full Hunger bar.",
+						"Gold Blocks + Red Apple",
+						GOLDEN_APPLE,
+						1,
+						[GOLD_BLOCK, GOLD_BLOCK, GOLD_BLOCK,
+							GOLD_BLOCK, APPLE, GOLD_BLOCK,
+							GOLD_BLOCK, GOLD_BLOCK, GOLD_BLOCK]);
+			
+			addRecipe("Melon Block",
+						"Compact storage of melon slices. Each slice restores . However, breaking one melon block only gives 3-7 melon slices.",
+						"Melon Slice",
+						MELON_BLOCK,
+						1,
+						[MELON_SLICE, MELON_SLICE, MELON_SLICE,
+							MELON_SLICE, MELON_SLICE, MELON_SLICE,
+							MELON_SLICE, MELON_SLICE, MELON_SLICE]);
+			
+			addRecipe("Melon Seeds",
+						"Plantable on farmland. Will produce one Melon Block each harvest.",
+						"Melon Slice",
+						MELON_SEEDS,
+						1,
+						[null, null, null,
+							null, null, null,
+							null, MELON_SLICE, null]);
+			
+			addRecipe("Pumpkin Seeds",
+						"Used in farming to obtain more Pumpkins.",
+						"Pumpkin",
+						PUMPKIN_SEEDS,
+						1,
+						[null, null, null,
+							null, PUMPKIN, null,
+							null, null, null]);
+			
+			addRecipe("Minerals",
+						"Used to reclaim ingots/gems/dyes from blocks.",
+						"Iron Block or Gold Block or Diamond Block or Lapis Lazuli Block",
+						[IRON_INGOT,
+							GOLD_INGOT,
+							DIAMOND_GEM,
+							LAPIS_LAZULI_GEM],
+						1,
+						[null, null, null,
+							null, null, null,
+							null, IRON_BLOCK, null],
+						[null, null, null,
+							null, null, null,
+							null, GOLD_BLOCK, null],
+						[null, null, null,
+							null, null, null,
+							null, DIAMOND_BLOCK, null],
+						[null, null, null,
+							null, null, null,
+							null, LAPIS_LAZULI_BLOCK, null]);
+			
+			addRecipe("Painting",
+						"Used as decoration.",
+						"Sticks + Wool",
+						PAINTING,
+						1,
+						[STICK, STICK, STICK,
+							STICK, WOOL, STICK,
+							STICK, STICK, STICK]);
+			
+			addRecipe("Sign"
 			
 			return true;
 		}
