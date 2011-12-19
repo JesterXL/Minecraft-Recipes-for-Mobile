@@ -17,7 +17,7 @@ package com.jxl.minecraftrecipes
 		
 		
 		
-		private static function getRecipe(title:String, description:String, ingredients:String, imageOrImages:*, value:uint, ... grids):RecipeVO
+		private static function getRecipe(title:String, description:String, ingredients:String, imageOrImages:*, values:*, ... grids):RecipeVO
 		{
 			var recipe:RecipeVO 				= new RecipeVO();
 			recipe.title 						= title;
@@ -31,7 +31,15 @@ package com.jxl.minecraftrecipes
 			{
 				recipe.images 					= imageOrImages;
 			}
-			recipe.value 						= value;
+			
+			if(values is Array)
+			{
+				recipe.values 					= values;
+			}
+			else
+			{
+				recipe.values 					= [values];
+			}
 			
 			var innerGrids:Array 				= grids[0];
 			var len:int 						= innerGrids.length;
@@ -63,9 +71,9 @@ package com.jxl.minecraftrecipes
 			return grid;
 		}
 		
-		private static function addRecipe(title:String, description:String, ingredients:String, imageOrImages:*, value:uint, ... grids):void
+		private static function addRecipe(title:String, description:String, ingredients:String, imageOrImages:*, values:*, ... grids):void
 		{
-			var recipe:RecipeVO = getRecipe(title, description, ingredients, imageOrImages, value, grids);
+			var recipe:RecipeVO = getRecipe(title, description, ingredients, imageOrImages, values, grids);
 			allRecipes.addItem(recipe);
 		}
 		
@@ -120,6 +128,30 @@ package com.jxl.minecraftrecipes
 		private static const IRON_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_(Block).png");
 		private static const DIAMOND_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_(Block).png");
 		private static const PAINTING:IngredientVO = new IngredientVO(IMAGE_PATH + "Painting.png");
+		private static const SIGN:IngredientVO = new IngredientVO(IMAGE_PATH + "Sign.png");
+		private static const GLASS:IngredientVO = new IngredientVO(IMAGE_PATH + "Glass.png");
+		private static const GLASS_PANE:IngredientVO = new IngredientVO(IMAGE_PATH + "Glass_Pane.png");
+		private static const LADDERS:IngredientVO = new IngredientVO(IMAGE_PATH + "Ladders.png");
+		private static const IRON_BARS:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Bars.png");
+		private static const FENCES:IngredientVO = new IngredientVO(IMAGE_PATH + "Fences.png");
+		private static const BOOK:IngredientVO = new IngredientVO(IMAGE_PATH + "Book.png");
+		private static const NETHER_BRICK:IngredientVO = new IngredientVO(IMAGE_PATH + "Nether_Brick.png");
+		private static const NETHER_BRICK_FENCE:IngredientVO = new IngredientVO(IMAGE_PATH + "Nether_Brick_Fence.png");
+		private static const FENCE_GATE:IngredientVO = new IngredientVO(IMAGE_PATH + "Fence_Gate.png");
+		private static const WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "White_Wool.png");
+		private static const BED:IngredientVO = new IngredientVO(IMAGE_PATH + "Bed.png");
+		private static const GOLD_NUGGET:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Nugget.png");
+		private static const ENDER_PEARL:IngredientVO = new IngredientVO(IMAGE_PATH + "Ender_Pearl.png");
+		private static const BLAZE_POWDER:IngredientVO = new IngredientVO(IMAGE_PATH + "Blaze_Powder.png");
+		private static const EYE_OF_ENDER:IngredientVO = new IngredientVO(IMAGE_PATH + "Eye_of_Ender.png");
+		private static const BONE_MEAL:IngredientVO = new IngredientVO(IMAGE_PATH + "Bone_Meal.png");
+		private static const BONE:IngredientVO = new IngredientVO(IMAGE_PATH + "Bone.png");
+		private static const LIGHT_GRAY_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Light_Gray_Dye.png");
+		private static const INK_SAC:IngredientVO = new IngredientVO(IMAGE_PATH + "Ink_Sac.png");
+		private static const GRAY_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Gray_Dye.png");
+		private static const ROSE:IngredientVO = new IngredientVO(IMAGE_PATH + "Rose.png");
+		private static const ROSE_RED:IngredientVO = new IngredientVO(IMAGE_PATH + "Rose_Red.png");
+		
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -958,7 +990,158 @@ package com.jxl.minecraftrecipes
 							STICK, WOOL, STICK,
 							STICK, STICK, STICK]);
 			
-			addRecipe("Sign"
+			addRecipe("Sign",
+						"Shows text entered by the player.",
+						"Wooden Planks + Stick",
+						SIGN,
+						1,
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							null, STICK, null]);
+			
+			addRecipe("Ladders",
+						"Used to climb vertically.",
+						"Sticks",
+						LADDERS,
+						4,
+						[STICK, null, STICK,
+							STICK, STICK, STICK,
+							STICK, null, STICK]);
+			
+			addRecipe("Glass Pane",
+						"Have similar placement behavior as Redstone and Fences and use the same texture as Glass. They cannot currently be placed horizontally. As of the 1.9 pre-release 2, they drop nothing when broken, just like normal glass blocks.",
+						"Glass",
+						GLASS_PANE,
+						4,
+						[null, null, null,
+							GLASS, GLASS, GLASS,
+							GLASS, GLASS, GLASS]);
+			
+			addRecipe("Iron Bars",
+						"Have similar placement behavior as Fences, however their height is counted as only 1 block.",
+						"Iron (Ingot)",
+						IRON_BARS,
+						4,
+						[null, null, null,
+							IRON_INGOT, IRON_INGOT, IRON_INGOT,
+							IRON_INGOT, IRON_INGOT, IRON_INGOT]);
+			
+			addRecipe("Paper",
+						"Used to create books and maps.",
+						"Sugar Cane",
+						PAPER,
+						1,
+						[null, null, null,
+							null, null, null,
+							SUGAR_CANE, SUGAR_CANE, SUGAR_CANE]);
+			
+			addRecipe("Book",
+						"Used to create a bookshelf or an enchantment table.",
+						"Paper",
+						BOOK,
+						1,
+						[null, PAPER, null,
+							null, PAPER, null,
+							null, PAPER, null]);
+			
+			addRecipe("Fences",
+						"Used as a barrier that cannot be jumped over. Counts as 1.5 blocks high for mobs and players, but 1 block high for other blocks.",
+						"Sticks",
+						FENCES,
+						4,
+						[null, null, null,
+							STICK, STICK, STICK,
+							STICK, STICK, STICK]);
+			
+			addRecipe("Nether Brick Fence",
+						"Like Fences, but the version created from Nether Bricks. Also found naturally in Nether Fortresses.",
+						"Nether Brick",
+						NETHER_BRICK_FENCE,
+						4,
+						[null, null, null,
+							NETHER_BRICK, NETHER_BRICK, NETHER_BRICK,
+							NETHER_BRICK, NETHER_BRICK, NETHER_BRICK]);
+			
+			addRecipe("Fence Gate",
+						"Used as a gate that can be opened like a door. However Fence gates are only opened by right-clicking (unlike doors and trapdoors, which can be opened by left- or right-clicking) and are not affected by Redstone. Fence gates also open differently, depending on which way you are facing it. But it will always open away from you.",
+						"Sticks + Wooden Planks",
+						FENCE_GATE,
+						1,
+						[null, null, null,
+							STICK, WOODEN_PLANK, STICK,
+							STICK, WOODEN_PLANK, STICK]);
+			
+			addRecipe("Beds",
+						"Used to forward time from any time at night to morning if all the players in the world are in bed, and changes the spawn point of the player. (The colors of the bed are always the same, regardless of the colors of wool used in the crafting.)",
+						"Sticks + Wooden Planks",
+						BED,
+						1,
+						[null, null, null,
+							WOOL, WOOL, WOOL,
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK]);
+			
+			addRecipe("Gold Ingot",
+						"Used in Tools, Armor, Clock and Powered Rail.",
+						"Gold Nugget",
+						GOLD_INGOT,
+						1,
+						[GOLD_NUGGET, GOLD_NUGGET, GOLD_NUGGET,
+							GOLD_NUGGET, GOLD_NUGGET, GOLD_NUGGET,
+							GOLD_NUGGET, GOLD_NUGGET, GOLD_NUGGET]);
+			
+			addRecipe("Eye of Ender",
+						"Used to locate Strongholds, and repair an End Portal Frame.",
+						"Ender Pearl + Blaze Powder",
+						EYE_OF_ENDER,
+						1,
+						[null, null, null,
+							null, ENDER_PEARL, null,
+							null, BLAZE_POWDER, null]);
+			
+			addRecipe("Bone Meal",
+						"Used to instantly grow crops, trees, tall grass, huge mushrooms and flowers, and can be used in dye recipes.",
+						"Bone",
+						BONE_MEAL,
+						4,
+						[null, null, null,
+							null, BONE, null,
+							null, BONE, null]);
+			
+			addRecipe("Light Gray Dye",
+						"Used as a dye to create light gray wool. (Note: light gray dye can also be made by combining gray dye with bone meal, thus letting you make 4 light gray dyes from every ink sac instead of 3.)",
+						"Ink Sac + Bone Meals or Gray Deye + Bone Meal",
+						LIGHT_GRAY_DYE,
+						[3, 4],
+						[null, null, null,
+							null, null, null,
+							INK_SAC, BONE_MEAL, BONE_MEAL],
+						[null, null, null,
+							null, null, null,
+							LIGHT_GRAY_DYE, null, BONE_MEAL]);
+			
+			addRecipe("Gray Dye",
+						"Used as a dye to create gray wool.",
+						"Ink Sac + Bone Meal",
+						GRAY_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							INK_SAC, null, BONE_MEAL]);
+			
+			addRecipe("Rose Red",
+						"Used as a dye to create red wool.",
+						"Rose",
+						ROSE_RED,
+						4,
+						[null, null, null,
+							null, null, null,
+							null, ROSE, null]);
+			
+			addRecipe("Orange Dye",
+						"Used as a dye to create orange wool.",
+						
+			
+						
 			
 			return true;
 		}

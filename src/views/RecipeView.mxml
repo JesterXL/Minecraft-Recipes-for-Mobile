@@ -46,22 +46,7 @@
 							imageTimer.start();
 						}
 						
-						
-						valueBlackTextField.text 	= _recipe.value.toString();
-						valueWhiteTextField.text 	= _recipe.value.toString();
-						
-						if(_recipe.value < 2)
-						{
-							valueBlackTextField.visible = false;
-							valueWhiteTextField.visible = false;
-						}
-						else
-						{
-							valueBlackTextField.visible = true;
-							valueWhiteTextField.visible = true;
-						}
-						
-						
+						updateValue();
 						changeImages();
 					}
 					else
@@ -109,7 +94,27 @@
 						currentImage = 0;
 					}
 				}
+				updateValue();
 				changeImages();
+			}
+			
+			private function updateValue():void
+			{
+				var value:uint = _recipe.values[currentImage] as uint;
+				
+				if(value < 2)
+				{
+					valueBlackTextField.visible = false;
+					valueWhiteTextField.visible = false;
+				}
+				else
+				{
+					valueBlackTextField.visible = true;
+					valueWhiteTextField.visible = true;
+				}
+				
+				valueBlackTextField.text 	= value.toString();
+				valueWhiteTextField.text 	= value.toString();
 			}
 			
 			private function changeImages():void
