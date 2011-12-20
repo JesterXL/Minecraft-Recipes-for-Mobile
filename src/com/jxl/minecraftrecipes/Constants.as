@@ -176,6 +176,16 @@ package com.jxl.minecraftrecipes
 		private static const MAGENTA_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Magenta_Wool.png");
 		private static const PINK_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Pink_Wool.png");
 		private static const BROWN_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Brown_Wool.png");
+		private static const GLASS_BOTTLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Glass_Bottle.png");
+		private static const CAULDRON:IngredientVO = new IngredientVO(IMAGE_PATH + "Cauldron.png");
+		private static const BREWING_STAND:IngredientVO = new IngredientVO(IMAGE_PATH + "Brewing_Stand.png");
+		private static const BLAZE_ROD:IngredientVO = new IngredientVO(IMAGE_PATH + "Blaze_Rod.png");
+		private static const MAGMA_CREAM:IngredientVO = new IngredientVO(IMAGE_PATH + "Magma_Cream.png");
+		private static const FERMENTED_SPIDER_EYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Fermented_Spider_Eye.png");
+		private static const GLISTERING_MELON:IngredientVO = new IngredientVO(IMAGE_PATH + "Glistering_Melon.png");
+		private static const ENCHANTMENT_TABLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Enchantment_Table.png");
+		private static const SPIDER_EYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Spider_Eye.png");
+		private static const OBSIDIAN:IngredientVO = new IngredientVO(IMAGE_PATH + "Obsidian.png");
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -1372,6 +1382,86 @@ package com.jxl.minecraftrecipes
 						[null, null, null,
 							null, null, null,
 							WOOL, null, COCOA_BEANS]);
+			
+			addRecipe("Glass Bottle",
+						"Used in Brewing.",
+						"Glass",
+						GLASS_BOTTLE,
+						4,
+						[null, null, null,
+							GLASS, null, GLASS,
+							null, GLASS, null]);
+			
+			addRecipe("Cauldron",
+						"Used to store water for Glass Bottle.",
+						"Iron Ingot",
+						CAULDRON,
+						1,
+						[IRON_INGOT, null, IRON_INGOT,
+							IRON_INGOT, null, IRON_INGOT,
+							IRON_INGOT, IRON_INGOT, IRON_INGOT]);
+			
+			addRecipe("Brewing Stand",
+						"Used to Brew.",
+						"Blaze Rod + Cobblestone",
+						BREWING_STAND,
+						1,
+						[null, null, null,
+							null, BLAZE_ROD, null,
+							COBBLESTONE, COBBLESTONE, COBBLESTONE]);
+			
+			addRecipe("Blaze Powder",
+						"Can be crafted together with a Ender Pearl, to create an Eye of Ender. Can also be used to craft Magma Cream.",
+						"Blaze Rod",
+						BLAZE_POWDER,
+						4,
+						[null, null, null,
+							null, BLAZE_ROD, null,
+							null, null, null]);
+			
+			addRecipe("Magma Cream",
+						"Used in Potions, mostly for fire-resistance.",
+						"Slimeball + Blaze Powder",
+						MAGMA_CREAM,
+						1,
+						[null, null, null,
+							null, SLIMEBALL, null,
+							null, BLAZE_POWDER, null]);
+			
+			addRecipe("Fermented Spider Eye",
+						"Used in Potions. All potions with Fermented Spider Eye have negative effects, which makes it useful in splash potions.",
+						"Spider Eye + Brown Mushroom + Sugar",
+						FERMENTED_SPIDER_EYE,
+						1,
+						[SPIDER_EYE, null, null,
+							BROWN_MUSHROOM, SUGAR, null,
+							null, null, null]);
+			
+			addRecipe("Glistering Melon",
+						"Used in Brewing to create health restoration Potions.",
+						"Melon Slice + Gold Nugget",
+						1,
+						[null, null, null,
+							MELON_SLICE, GOLD_NUGGET, null,
+							null, null, null]);
+			
+			addRecipe("Gold Nugget",
+						"Used to craft Glistering Melon with Melon Slices.",
+						"Gold Ingot",
+						GOLD_NUGGET,
+						1,
+						[null, null, null,
+							null, GOLD_INGOT, null,
+							null, null, null]);
+			
+			addRecipe("Enchantment Table",
+						"Used to Enchant Tools.",
+						"Book + Diamond + Obsidian",
+						ENCHANTMENT_TABLE,
+						1,
+						[null, BOOK, null,
+							DIAMOND_GEM, OBSIDIAN, DIAMOND_GEM,
+							OBSIDIAN, OBSIDIAN, OBSIDIAN]);
 			
 			return true;
 		}
