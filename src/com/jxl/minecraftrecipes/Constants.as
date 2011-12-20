@@ -151,7 +151,31 @@ package com.jxl.minecraftrecipes
 		private static const GRAY_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Gray_Dye.png");
 		private static const ROSE:IngredientVO = new IngredientVO(IMAGE_PATH + "Rose.png");
 		private static const ROSE_RED:IngredientVO = new IngredientVO(IMAGE_PATH + "Rose_Red.png");
-		
+		private static const DANDELION_YELLOW:IngredientVO = new IngredientVO(IMAGE_PATH + "Dandelion_Yellow.png");
+		private static const ORANGE_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Orange_Dye.png");
+		private static const DANDELION:IngredientVO = new IngredientVO(IMAGE_PATH + "Dandelion.png");
+		private static const LIME_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Lime_Dye.png");
+		private static const CACTUS_GREEN:IngredientVO = new IngredientVO(IMAGE_PATH + "Cactus_Green.png");
+		private static const LIGHT_BLUE_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Light_Blue_Dye.png");
+		private static const CYAN_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Cyan_Dye.png");
+		private static const PURPLE_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Purple_Dye.png");
+		private static const MAGENTA_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Magenta_Dye.png");
+		private static const PINK_DYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Pink_Dye.png");
+		private static const LIGHT_GRAY_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Light_Gray_Wool.png");
+		private static const GRAY_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Gray_Wool.png");
+		private static const BLACK_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Black_Wool.png");
+		private static const RED_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Red_Wool.png");
+		private static const ORANGE_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Orange_Wool.png");
+		private static const YELLOW_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Yellow_Wool.png");
+		private static const LIME_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Lime_Wool.png");
+		private static const GREEN_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Green_Wool.png");
+		private static const LIGHT_BLUE_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Light_Blue_Wool.png");
+		private static const CYAN_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Cyan_Wool.png");
+		private static const BLUE_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Blue_Wool.png");
+		private static const PURPLE_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Purple_Wool.png");
+		private static const MAGENTA_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Magenta_Wool.png");
+		private static const PINK_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Pink_Wool.png");
+		private static const BROWN_WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "Brown_Wool.png");
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -1139,9 +1163,215 @@ package com.jxl.minecraftrecipes
 			
 			addRecipe("Orange Dye",
 						"Used as a dye to create orange wool.",
-						
+						"Rose Red + Dandelion Yellow",
+						ORANGE_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							ROSE_RED, null, DANDELION_YELLOW]);
 			
-						
+			addRecipe("Dandelion Yellow",
+						"Used as a dye to create yellow wool.",
+						"Dandelion",
+						DANDELION_YELLOW,
+						4,
+						[null, null, null,
+							null, null, null,
+							null, DANDELION, null]);
+			
+			addRecipe("Lime Dye",
+						"Used as a dye to create lime wool.",
+						"Cactus Green + Bone Meal",
+						LIME_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							CACTUS_GREEN, null, BONE_MEAL]);
+			
+			addRecipe("Light Blue Dye",
+						"Used as a dye to create light blue wool.",
+						"Lapis Lazuli Dye + Bone Meal",
+						LIGHT_BLUE_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							LAPIS_LAZULI_GEM, null, BONE_MEAL]);
+			
+			addRecipe("Cyan Dye",
+						"Used as a dye to create cyan wool.",
+						"Lapis Lazuli Dye + Cactus Green",
+						CYAN_DYE,
+						[null, null, null,
+							null, null, null,
+							LAPIS_LAZULI_GEM, null, CACTUS_GREEN]);
+			
+			addRecipe("Purple Dye",
+						"Used as a dye to create purple wool.",
+						"Lapis Lazuli Dye + Rose Red",
+						PURPLE_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							LAPIS_LAZULI_GEM, null, ROSE_RED]);
+			
+			addRecipe("Magenta Dye",
+						"Used as a dye to create magenta wool.",
+						"Purple Dye + Pink Dye or Lapis Lazuli Dye + Bone Meal + 2 Rose Red or Lapis Lazuli Dye + Pink Dye + Rose Red",
+						MAGENTA_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							PURPLE_DYE, null, PINK_DYE],
+						[null, null, null,
+							null, null, null,
+							PINK_DYE, ROSE_RED, LAPIS_LAZULI_GEM],
+						[null, null, null,
+							LAPIS_LAZULI_GEM, BONE_MEAL, null,
+							ROSE_RED, ROSE_RED, null]);
+			
+			addRecipe("Pink Dye",
+						"Used as a dye to create pink wool.",
+						"Rose Red + Bone Meal",
+						PINK_DYE,
+						4,
+						[null, null, null,
+							null, null, null,
+							ROSE_RED, null, BONE_MEAL]);
+			
+			addRecipe("Light Gray Wool",
+						"Decoration.",
+						"Wool + Light Gray Dye",
+						LIGHT_GRAY_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, LIGHT_GRAY_DYE]);
+			
+			addRecipe("Gray Wool",
+						"Decoration.",
+						"Wool + Gray Dye",
+						GRAY_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, GRAY_DYE]);
+			
+			addRecipe("Black Wool",
+						"Decoration.",
+						"Wool + Ink Sac",
+						BLACK_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, INK_SAC]);
+			
+			addRecipe("Red Wool",
+						"Decoration.",
+						"Wool + Rose Red",
+						RED_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, ROSE_RED]);
+			
+			addRecipe("Orange Wool",
+						"Decoration.",
+						"Wool + Orange Dye",
+						ORANGE_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, ORANGE_DYE]);
+			
+			addRecipe("Yellow Wool",
+						"Decoration.",
+						"Wool + Dandelion Yellow",
+						YELLOW_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, DANDELION_YELLOW]);
+			
+			addRecipe("Lime Wool",
+						"Decoration.",
+						"Wool + Lime Dye",
+						LIME_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, LIME_DYE]);
+			
+			addRecipe("Green Wool",
+						"Decoration.",
+						"Wool + Cactus Green",
+						GREEN_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, CACTUS_GREEN]);
+			
+			addRecipe("Light Blue Wool",
+						"Decoration.",
+						"Wool + Light Blue Dye",
+						GREEN_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, LIGHT_BLUE_DYE]);
+			
+			addRecipe("Cyan Wool",
+						"Decoration.",
+						"Wool + Cyan Dye",
+						CYAN_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, CYAN_DYE]);
+			
+			addRecipe("Blue Wool",
+						"Decoration.",
+						"Wool + Lapis Lazuli Dye",
+						BLUE_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, LAPIS_LAZULI_GEM]);
+			
+			addRecipe("Purple Wool",
+						"Decoration.",
+						"Wool + Purple Dye",
+						PURPLE_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, PURPLE_DYE]);
+				
+			addRecipe("Magenta Wool",
+						"Decoration.",
+						"Wool + Magenta Dye",
+						MAGENTA_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, MAGENTA_DYE]);
+			
+			addRecipe("Pink Wool",
+						"Decoration.",
+						"Wool + Pink Dye",
+						PINK_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, PINK_DYE]);
+			
+			addRecipe("Brown Wool",
+						"Decoration.",
+						"Wool + Cocoa Beans",
+						BROWN_WOOL,
+						1,
+						[null, null, null,
+							null, null, null,
+							WOOL, null, COCOA_BEANS]);
 			
 			return true;
 		}
