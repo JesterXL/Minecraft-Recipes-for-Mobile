@@ -186,6 +186,25 @@ package com.jxl.minecraftrecipes
 		private static const ENCHANTMENT_TABLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Enchantment_Table.png");
 		private static const SPIDER_EYE:IngredientVO = new IngredientVO(IMAGE_PATH + "Spider_Eye.png");
 		private static const OBSIDIAN:IngredientVO = new IngredientVO(IMAGE_PATH + "Obsidian.png");
+		private static const APPLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Apple.png");
+		private static const GLOWSTONE_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Glowstone_(Block).png");
+		private static const TNT:IngredientVO = new IngredientVO(IMAGE_PATH + "TNT.png");
+		private static const STONE_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Slab.png");
+		private static const SANDSTONE_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Sandstone_Slab.png");
+		private static const WOODEN_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Slab.png");
+		private static const COBBLESTONE_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Cobblestone_Slab.png");
+		private static const BRICK_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Brick_Slab.png");
+		private static const STONE_BRICKS_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Bricks_Slab.png");
+		private static const WOODEN_STAIRS:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Stairs.png");
+		private static const COBBLESTONE_STAIRS:IngredientVO = new IngredientVO(IMAGE_PATH + "Cobblestone_Stairs.png");
+		private static const BRICK_STAIRS:IngredientVO = new IngredientVO(IMAGE_PATH + "Brick_Stairs.png");
+		private static const STONE_BRICKS_STAIRS:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Bricks_Stairs.png");
+		private static const NETHER_BRICK_STAIRS:IngredientVO = new IngredientVO(IMAGE_PATH + "Nether_Brick_Stairs.png");
+		private static const SNOW_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Snow_(Block).png");
+		private static const CLAY_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Clay_(Block).png");
+		private static const BRICK_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Brick_(Block).png");
+		private static const STONE_BRICK:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Brick.png");
+		private static const BOOKSHELF:IngredientVO = new IngredientVO(IMAGE_PATH + "Bookshelf.png");
 		
 		public static function initializeRecipes():Boolean
 		{
@@ -203,7 +222,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Sticks", 
 						"Used to craft torches, arrows, signs,\n ladders, fences and as handles for tools and weapons.",
 						"Wooden Plank",
-						IMAGE_PATH + "Stick.png",
+						STICK,
 						4,
 						[null, null, null,
 						null, new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
@@ -212,7 +231,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Torches",
 						"Used to create light. Torches also melt snow and ice.",
 						"Stick + Coal (or Charcoal)",
-						IMAGE_PATH + "Torch.png",
+						TORCH,
 						4,
 						[null, null, null,
 						null, new IngredientVO(IMAGE_PATH + "Coal_(Item).png"), null,
@@ -221,7 +240,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Crafting Table",
 						"Allows the player to craft on a 3x3 grid.",
 						"Wooden Plank",
-						IMAGE_PATH + "Crafting_Table.png",
+						CRAFTING_TABLE,
 						1,
 						[null, null, null,
 						new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
@@ -230,7 +249,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Furnace",
 						"Allows the player to smelt.",
 						"Cobblestone",
-						IMAGE_PATH + "Furnace.png",
+						FURNACE,
 						1,
 						[new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"),
 							new IngredientVO(IMAGE_PATH + "Cobblestone.png"), null, new IngredientVO(IMAGE_PATH + "Cobblestone.png"),
@@ -240,7 +259,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Chest",
 						"Stores blocks and items inside. Place two chests side by side to create a larger chest with double the capacity.",
 						"Wooden Plank",
-						IMAGE_PATH + "Chest.png",
+						CHEST,
 						1,
 						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
 							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null, new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
@@ -249,10 +268,10 @@ package com.jxl.minecraftrecipes
 			addRecipe("Ore Blocks",
 						"Stores blocks and items inside. Place two chests side by side to create a larger chest with double the capacity.",
 						"",
-						[IMAGE_PATH + "Lapis_Lazuli_(Block).png",
-							IMAGE_PATH + "Gold_(Block).png",
-							IMAGE_PATH + "Iron_(Block).png",
-							IMAGE_PATH + "Diamond_(Block).png"],
+						[LAPIS_LAZULI_BLOCK,,
+							GOLD_BLOCK,
+							IRON_BLOCK,
+							DIAMOND_BLOCK],
 						1,
 						[new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"),
 							new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), null, new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"),
@@ -274,7 +293,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Glowstone",
 						"Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
 						"Glowstone (Dust)",
-						IMAGE_PATH + "Glowstone_(Block).png",
+						GLOWSTONE_BLOCK,
 						1,
 						[null, null, null,
 							new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png"), new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png"), null,
@@ -283,7 +302,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Wool",
 						"Used as a building material and can be colored with dyes. This recipe is not recommended because Wool can be easily obtained from Sheep.",
 						"String",
-						IMAGE_PATH + "White_Wool.png",
+						WOOL,
 						1,
 						[null, null, null,
 							new IngredientVO(IMAGE_PATH + "String.png"), new IngredientVO(IMAGE_PATH + "String.png"), null,
@@ -292,7 +311,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("TNT",
 						"Used to cause explosions.",
 						"Gunpowder + Sand",
-						IMAGE_PATH + "TNT.png",
+						TNT,
 						1,
 						[new IngredientVO(IMAGE_PATH + "Gunpowder.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Gunpowder.png"),
 							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Gunpowder.png"), new IngredientVO(IMAGE_PATH + "Sand.png"),
@@ -302,12 +321,12 @@ package com.jxl.minecraftrecipes
 			addRecipe("Slabs",
 						"Used for making long staircases. Two slabs placed on top of each other will create a normal-sized double slab block.",
 						"Stone, Sandstone, Wooden Planks, Cobblestone, Brick, or Stone Brick",
-						[IMAGE_PATH  + "Stone_Slab.png",
-							IMAGE_PATH + "Sandstone_Slab.png",
-							IMAGE_PATH + "Wooden_Slab.png",
-							IMAGE_PATH + "Cobblestone_Slab.png",
-							IMAGE_PATH + "Brick_Slab.png",
-							IMAGE_PATH + "Stone_Bricks_Slab.png"],
+						[STONE_SLAB,
+							SANDSTONE_SLAB,
+							WOODEN_SLAB,
+							COBBLESTONE_SLAB,
+							BRICK_SLAB,
+							STONE_BRICKS_SLAB],
 						1,
 						[null, null, null,
 							null, null, null,
@@ -332,11 +351,11 @@ package com.jxl.minecraftrecipes
 			addRecipe("Stairs",
 						"Used for compact staircases.",
 						"Wooden Planks, Cobblestone, Brick, Stone Brick, Nether Brick",
-						[IMAGE_PATH + "Wooden_Stairs.png",
-							IMAGE_PATH + "Cobblestone_Stairs.png",
-							IMAGE_PATH + "Brick_Stairs.png",
-							IMAGE_PATH + "Stone_Brick_Stairs.png",
-							IMAGE_PATH + "Nether_Brick_Stairs.png"],
+						[WOODEN_STAIRS,
+							COBBLESTONE_STAIRS,
+							BRICK_STAIRS,
+							STONE_BRICKS_STAIRS,
+							NETHER_BRICK_STAIRS],
 						4,
 						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null, null,
 							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
@@ -357,7 +376,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Snow Block",
 						"Used as a building material.",
 						"Snowballs",
-						IMAGE_PATH + "Snow_(Block).png",
+						SNOW_BLOCK,
 						1,
 						[null, null, null,
 							new IngredientVO(IMAGE_PATH + "Snowball.png"), new IngredientVO(IMAGE_PATH + "Snowball.png"), null,
@@ -366,7 +385,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Clay Block",
 					"Used to store Clay Balls, or as a building material.",
 					"Clay",
-					IMAGE_PATH + "Clay_(Block).png",
+					CLAY_BLOCK,
 					1,
 					[null, null, null,
 						new IngredientVO(IMAGE_PATH + "Clay_(Item).png"), new IngredientVO(IMAGE_PATH + "Clay_(Item).png"), null,
@@ -375,7 +394,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Brick (Block)",
 						"Used as a building material.",
 						"Clay Bricks",
-						IMAGE_PATH + "Brick_(Block).png",
+						BRICK_BLOCK,
 						1,
 						[null, null, null,
 							new IngredientVO(IMAGE_PATH + "Clay_(Brick).png"), new IngredientVO(IMAGE_PATH + "Clay_(Brick).png"), null,
@@ -384,7 +403,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Stone Brick",
 						"Used as a building material.",
 						"Stone",
-						IMAGE_PATH + "Stone_Brick.png",
+						STONE_BRICK,
 						4,
 						[null, null, null,
 							new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png"), null,
@@ -393,7 +412,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Bookshelf",
 						"Used as decoration, or to give an Enchantment Table knowledge.",
 						"Wooden Plank + Books",
-						IMAGE_PATH + "Bookshelf.png",
+						BOOKSHELF,
 						1,
 						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
 							new IngredientVO(IMAGE_PATH + "Book.png"), new IngredientVO(IMAGE_PATH + "Book.png"), new IngredientVO(IMAGE_PATH + "Book.png"), 
@@ -401,7 +420,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Sandstone",
 						"Used as a building material. Is not influenced by gravity like normal Sand.",
 						"Sand",
-						IMAGE_PATH + "Sandstone.png",
+						SANDSTONE,
 						1,
 						[null, null, null,
 							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), null,
