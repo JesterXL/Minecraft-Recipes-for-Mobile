@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Script>
+		<![CDATA[
+			
+			private var _favorite:Boolean = false;
+			private var favoriteDirty:Boolean = true;
+			
+			public function get favorite():Boolean { return _favorite; }
+			public function set favorite(value:Boolean):void
+			{
+				if(value !== _favorite)
+				{
+					_favorite = value;
+					favoriteDirty = true;
+					invalidateProperties();
+				}
+			}
+			
+			protected override function commitProperties():void
+			{
+				super.commitProperties();
+				
+				if(favoriteDirty)
+				{
+					favoriteDirty = false;
+					if(_favorite)
+					{
+						label = "Remove From Favorites";
+					}
+					else
+					{
+						label = "Add To Favorites";
+					}
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	
+</s:Button>

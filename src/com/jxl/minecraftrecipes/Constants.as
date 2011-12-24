@@ -12,6 +12,7 @@ package com.jxl.minecraftrecipes
 		
 		public static var allRecipes:ArrayCollection;
 		public static const IMAGE_PATH:String = "/assets/images/";
+		private static var initialized:Boolean = false;
 		
 		//private static var classConstructed:Boolean = classConstruct();
 		
@@ -83,6 +84,7 @@ package com.jxl.minecraftrecipes
 		private static const CRAFTING_TABLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Crafting_Table.png");
 		private static const COBBLESTONE:IngredientVO = new IngredientVO(IMAGE_PATH + "Cobblestone.png");
 		private static const IRON_INGOT:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png");
+		private static const BUCKET:IngredientVO = new IngredientVO(IMAGE_PATH + "Bucket.png");
 		private static const GOLD_INGOT:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png");
 		private static const DIAMOND_GEM:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png");
 		private static const COAL:IngredientVO = new IngredientVO(IMAGE_PATH + "Coal_(Item).png");
@@ -90,6 +92,8 @@ package com.jxl.minecraftrecipes
 		private static const PAPER:IngredientVO = new IngredientVO(IMAGE_PATH + "Paper.png");
 		private static const COMPASS:IngredientVO = new IngredientVO(IMAGE_PATH + "Compass.png");
 		private static const STRING:IngredientVO = new IngredientVO(IMAGE_PATH + "String.png");
+		private static const SAND:IngredientVO = new IngredientVO(IMAGE_PATH + "Sand");
+		private static const GUNPOWDER:IngredientVO = new IngredientVO(IMAGE_PATH + "Gunpowder.png");
 		private static const FLINT:IngredientVO = new IngredientVO(IMAGE_PATH + "Flint.png");
 		private static const FEATHER:IngredientVO = new IngredientVO(IMAGE_PATH + "Feather.png");
 		private static const ARROW:IngredientVO = new IngredientVO(IMAGE_PATH + "Arrow.png");
@@ -99,7 +103,7 @@ package com.jxl.minecraftrecipes
 		private static const CHEST:IngredientVO = new IngredientVO(IMAGE_PATH + "Chest.png");
 		private static const MINECART:IngredientVO = new IngredientVO(IMAGE_PATH + "Minecart.png");
 		private static const STONE_PRESSURE_PLATE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Pressure_Plate.png");
-		private static const STONE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone.png");
+		private static const STONE:IngredientVO = STONE;
 		private static const BOW:IngredientVO = new IngredientVO(IMAGE_PATH + "Bow.png");
 		private static const REDSTONE_TORCH:IngredientVO = new IngredientVO(IMAGE_PATH + "Redstone_Torch.png");
 		private static const PISTON:IngredientVO = new IngredientVO(IMAGE_PATH + "Piston.png");
@@ -134,8 +138,8 @@ package com.jxl.minecraftrecipes
 		private static const LADDERS:IngredientVO = new IngredientVO(IMAGE_PATH + "Ladders.png");
 		private static const IRON_BARS:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Bars.png");
 		private static const FENCES:IngredientVO = new IngredientVO(IMAGE_PATH + "Fences.png");
-		private static const BOOK:IngredientVO = new IngredientVO(IMAGE_PATH + "Book.png");
-		private static const NETHER_BRICK:IngredientVO = new IngredientVO(IMAGE_PATH + "Nether_Brick.png");
+		private static const BOOK:IngredientVO = BOOK;
+		private static const NETHER_BRICK:IngredientVO = NETHER_BRICK;
 		private static const NETHER_BRICK_FENCE:IngredientVO = new IngredientVO(IMAGE_PATH + "Nether_Brick_Fence.png");
 		private static const FENCE_GATE:IngredientVO = new IngredientVO(IMAGE_PATH + "Fence_Gate.png");
 		private static const WOOL:IngredientVO = new IngredientVO(IMAGE_PATH + "White_Wool.png");
@@ -188,6 +192,7 @@ package com.jxl.minecraftrecipes
 		private static const OBSIDIAN:IngredientVO = new IngredientVO(IMAGE_PATH + "Obsidian.png");
 		private static const APPLE:IngredientVO = new IngredientVO(IMAGE_PATH + "Apple.png");
 		private static const GLOWSTONE_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Glowstone_(Block).png");
+		private static const GLOWSTONE_DUST:IngredientVO = new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png");
 		private static const TNT:IngredientVO = new IngredientVO(IMAGE_PATH + "TNT.png");
 		private static const STONE_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Slab.png");
 		private static const SANDSTONE_SLAB:IngredientVO = new IngredientVO(IMAGE_PATH + "Sandstone_Slab.png");
@@ -202,22 +207,81 @@ package com.jxl.minecraftrecipes
 		private static const NETHER_BRICK_STAIRS:IngredientVO = new IngredientVO(IMAGE_PATH + "Nether_Brick_Stairs.png");
 		private static const SNOW_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Snow_(Block).png");
 		private static const CLAY_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Clay_(Block).png");
-		private static const BRICK_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Brick_(Block).png");
-		private static const STONE_BRICK:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Brick.png");
+		private static const BRICK_BLOCK:IngredientVO = BRICK_BLOCK;
+		private static const STONE_BRICK:IngredientVO = STONE_BRICK;
 		private static const BOOKSHELF:IngredientVO = new IngredientVO(IMAGE_PATH + "Bookshelf.png");
+		private static const JACK_O_LANTERN:IngredientVO = new IngredientVO(IMAGE_PATH + "Jack_O_Lantern.png");
+		private static const SANDSTONE:IngredientVO = new IngredientVO(IMAGE_PATH + "Sandstone.png");
+		private static const WOODEN_AXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Axe.png");
+		private static const STONE_AXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Axe.png");
+		private static const IRON_AXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Axe.png");
+		private static const GOLD_AXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Axe.png");
+		private static const DIAMOND_AXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_Axe.png");
+		private static const WOODEN_PICKAXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Pickaxe.png");
+		private static const STONE_PICKAXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Pickaxe.png");
+		private static const IRON_PICKAXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Pickaxe.png");
+		private static const GOLD_PICKAXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Pickaxe.png");
+		private static const DIAMOND_PICKAXE:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_Pickaxe.png");
+		private static const WOODEN_SHOVEL:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Shovel.png");
+		private static const STONE_SHOVEL:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Shovel.png");
+		private static const IRON_SHOVEL:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Shovel.png");
+		private static const GOLD_SHOVEL:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Shovel.png");
+		private static const DIAMOND_SHOVEL:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_Shovel.png");
+		private static const WOODEN_SWORD:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Sword.png");
+		private static const STONE_SWORD:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Sword.png");
+		private static const IRON_SWORD:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Sword.png");
+		private static const GOLD_SWORD:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Sword.png");
+		private static const DIAMOND_SWORD:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_Sword.png");
+		private static const WOODEN_HOE:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Hoe.png");
+		private static const STONE_HOE:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Hoe.png");
+		private static const IRON_HOE:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Hoe.png");
+		private static const GOLD_HOE:IngredientVO = new IngredientVO(IMAGE_PATH + "Gold_Hoe.png");
+		private static const DIAMOND_HOE:IngredientVO = new IngredientVO(IMAGE_PATH + "Diamond_Hoe.png");
+		private static const FLINT_AND_STEEL:IngredientVO = new IngredientVO(IMAGE_PATH + "Flint_and_Steel.png");
+		private static const WOOD:IngredientVO = new IngredientVO(IMAGE_PATH + "Wood.png");
+		private static const SNOWBALL:IngredientVO = new IngredientVO(IMAGE_PATH + "Snowball.png");
+		private static const CLAY:IngredientVO = new IngredientVO(IMAGE_PATH + "Clay_(Item).png");
+		private static const CLAY_BRICK:IngredientVO = new IngredientVO(IMAGE_PATH + "Clay_(Brick).png");
+		private static const MAP:IngredientVO = new IngredientVO(IMAGE_PATH + "Map_(Item).png");
+		private static const CLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Clock.png");
+		private static const FISHING_ROD:IngredientVO = new IngredientVO(IMAGE_PATH + "Fishing_Rod.png");
+		private static const SHEARS:IngredientVO = new IngredientVO(IMAGE_PATH + "Shears.png");
+		private static const BOAT:IngredientVO = new IngredientVO(IMAGE_PATH + "Boat.png");
+		private static const DETECTOR_RAIL:IngredientVO = new IngredientVO(IMAGE_PATH + "Detector_Rail.png");
+		private static const DISPENSER:IngredientVO = new IngredientVO(IMAGE_PATH + "Dispenser.png");
+		private static const IRON_DOOR:IngredientVO = new IngredientVO(IMAGE_PATH + "Iron_Door.png");
+		private static const JUKEBOX:IngredientVO = new IngredientVO(IMAGE_PATH + "Jukebox");
+		private static const LEVER:IngredientVO = new IngredientVO(IMAGE_PATH + "Lever.png");
+		private static const NOTE_BLOCK:IngredientVO = new IngredientVO(IMAGE_PATH + "Note_Block.png");
+		private static const POWERED_MINECART:IngredientVO = new IngredientVO(IMAGE_PATH + "Powered_Minecart.png");
+		private static const POWERED_RAIL:IngredientVO = new IngredientVO(IMAGE_PATH + "Powered_Rail.png");
+		private static const PRESSURE_PLATE:IngredientVO = new IngredientVO(IMAGE_PATH + "Pressure_Plate.png");
+		private static const RAIL:IngredientVO = new IngredientVO(IMAGE_PATH + "Rail.png");
+		private static const REDSTONE_REPEATER:IngredientVO = new IngredientVO(IMAGE_PATH + "Redstone_Repeater.png");
+		private static const STEW:IngredientVO = new IngredientVO(IMAGE_PATH + "Stew.png");
+		private static const STICK_PISTON:IngredientVO = new IngredientVO(IMAGE_PATH + "Stick_Piston.png");
+		private static const STONE_BUTTON:IngredientVO = new IngredientVO(IMAGE_PATH + "Stone_Button.png");
+		private static const STORAGE_MINECART:IngredientVO = new IngredientVO(IMAGE_PATH + "Storage_Minecart.png");
+		private static const TRAPDOOR:IngredientVO = new IngredientVO(IMAGE_PATH + "Trapdoor.png");
+		private static const WOODEN_DOOR:IngredientVO = new IngredientVO(IMAGE_PATH + "Wooden_Door.png");
 		
-		public static function initializeRecipes():Boolean
+		public static function initializeRecipes():void
 		{
+			if(initialized == true)
+				return;
+			
+			initialized = true;
+			
 			allRecipes = new ArrayCollection();
 			
 			addRecipe("Wooden Planks", 
 				"Used as a building material and can be crafted into many things. Any form of wood used will still result in the same output.", 
 				"Wood",
-				IMAGE_PATH + "Wooden_Plank.png",
+				WOODEN_PLANK,
 				4,
 				[null, null, null,
 					null, null, null,
-					null, new IngredientVO(IMAGE_PATH + "Wood.png"), null]);
+					null, WOOD, null]);
 			
 			addRecipe("Sticks", 
 						"Used to craft torches, arrows, signs,\n ladders, fences and as handles for tools and weapons.",
@@ -225,8 +289,8 @@ package com.jxl.minecraftrecipes
 						STICK,
 						4,
 						[null, null, null,
-						null, new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
-						null, new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null]);
+						null, WOODEN_PLANK, null,
+						null, WOODEN_PLANK, null]);
 			
 			addRecipe("Torches",
 						"Used to create light. Torches also melt snow and ice.",
@@ -234,8 +298,8 @@ package com.jxl.minecraftrecipes
 						TORCH,
 						4,
 						[null, null, null,
-						null, new IngredientVO(IMAGE_PATH + "Coal_(Item).png"), null,
-						null, new IngredientVO(IMAGE_PATH + "Stick.png"), null]);
+						null, COAL, null,
+						null, STICK, null]);
 						
 			addRecipe("Crafting Table",
 						"Allows the player to craft on a 3x3 grid.",
@@ -243,17 +307,17 @@ package com.jxl.minecraftrecipes
 						CRAFTING_TABLE,
 						1,
 						[null, null, null,
-						new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
-						new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null]);
+						WOODEN_PLANK, WOODEN_PLANK, null,
+						WOODEN_PLANK, WOODEN_PLANK, null]);
 			
 			addRecipe("Furnace",
 						"Allows the player to smelt.",
 						"Cobblestone",
 						FURNACE,
 						1,
-						[new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"),
-							new IngredientVO(IMAGE_PATH + "Cobblestone.png"), null, new IngredientVO(IMAGE_PATH + "Cobblestone.png"),
-							new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png")]);
+						[COBBLESTONE, COBBLESTONE, COBBLESTONE,
+							COBBLESTONE, null, COBBLESTONE,
+							COBBLESTONE, COBBLESTONE, COBBLESTONE]);
 			
 			
 			addRecipe("Chest",
@@ -261,9 +325,9 @@ package com.jxl.minecraftrecipes
 						"Wooden Plank",
 						CHEST,
 						1,
-						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
-							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null, new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
-							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png")]);
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							WOODEN_PLANK, null, WOODEN_PLANK,
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK]);
 			
 			addRecipe("Ore Blocks",
 						"Stores blocks and items inside. Place two chests side by side to create a larger chest with double the capacity.",
@@ -273,21 +337,21 @@ package com.jxl.minecraftrecipes
 							IRON_BLOCK,
 							DIAMOND_BLOCK],
 						1,
-						[new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"),
-							new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), null, new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"),
-							new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png"), new IngredientVO(IMAGE_PATH + "Lapis_Lazuli_(Dye).png")],
+						[LAPIS_LAZULI_GEM, LAPIS_LAZULI_GEM, LAPIS_LAZULI_GEM,
+							LAPIS_LAZULI_GEM, LAPIS_LAZULI_GEM, LAPIS_LAZULI_GEM,
+							LAPIS_LAZULI_GEM, LAPIS_LAZULI_GEM, LAPIS_LAZULI_GEM],
 						
-						[new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"),
-							new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), null, new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"),
-							new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png")],
+						[GOLD_INGOT, GOLD_INGOT, GOLD_INGOT,
+							GOLD_INGOT, GOLD_INGOT, GOLD_INGOT,
+							GOLD_INGOT, GOLD_INGOT, GOLD_INGOT],
 						
-						[new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"),
-							new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"),
-							new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png")],
+						[IRON_INGOT, IRON_INGOT, IRON_INGOT,
+							IRON_INGOT, IRON_INGOT, IRON_INGOT,
+							IRON_INGOT, IRON_INGOT, IRON_INGOT],
 						
-						[new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"),
-							new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"),
-							new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png")]);
+						[DIAMOND_GEM, DIAMOND_GEM, DIAMOND_GEM,
+							DIAMOND_GEM, DIAMOND_GEM, DIAMOND_GEM,
+							DIAMOND_GEM, DIAMOND_GEM, DIAMOND_GEM]);
 						
 			
 			addRecipe("Glowstone",
@@ -296,8 +360,8 @@ package com.jxl.minecraftrecipes
 						GLOWSTONE_BLOCK,
 						1,
 						[null, null, null,
-							new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png"), new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png"), null,
-							new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png"), new IngredientVO(IMAGE_PATH + "Glowstone_(Dust).png"), null]);
+							GLOWSTONE_DUST, GLOWSTONE_DUST, null,
+							GLOWSTONE_DUST, GLOWSTONE_DUST, null]);
 			
 			addRecipe("Wool",
 						"Used as a building material and can be colored with dyes. This recipe is not recommended because Wool can be easily obtained from Sheep.",
@@ -305,17 +369,17 @@ package com.jxl.minecraftrecipes
 						WOOL,
 						1,
 						[null, null, null,
-							new IngredientVO(IMAGE_PATH + "String.png"), new IngredientVO(IMAGE_PATH + "String.png"), null,
-							new IngredientVO(IMAGE_PATH + "String.png"), new IngredientVO(IMAGE_PATH + "String.png"), null]);
+							STRING, STRING, null,
+							STRING, STRING, null]);
 			
 			addRecipe("TNT",
 						"Used to cause explosions.",
 						"Gunpowder + Sand",
 						TNT,
 						1,
-						[new IngredientVO(IMAGE_PATH + "Gunpowder.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Gunpowder.png"),
-							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Gunpowder.png"), new IngredientVO(IMAGE_PATH + "Sand.png"),
-							new IngredientVO(IMAGE_PATH + "Gunpowder.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Gunpowder.png")]);
+						[GUNPOWDER, SAND, GUNPOWDER,
+							SAND, GUNPOWDER, SAND,
+							GUNPOWDER, SAND, GUNPOWDER]);
 						
 			
 			addRecipe("Slabs",
@@ -330,22 +394,22 @@ package com.jxl.minecraftrecipes
 						1,
 						[null, null, null,
 							null, null, null,
-							new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png")],
+							STONE, STONE, STONE],
 						[null, null, null,
 							null, null, null,
-							new IngredientVO(IMAGE_PATH + "Sandstone.png"), new IngredientVO(IMAGE_PATH + "Sandstone.png"), new IngredientVO(IMAGE_PATH + "Sandstone.png")],
+							SANDSTONE, SANDSTONE, SANDSTONE],
 						[null, null, null,
 							null, null, null,
-							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png")],
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK],
 						[null, null, null,
 							null, null, null,
-							new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png")],
+							COBBLESTONE, COBBLESTONE, COBBLESTONE],
 						[null, null, null,
 							null, null, null,
-							new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), new IngredientVO(IMAGE_PATH + "Brick_(Block).png")],
+							BRICK_BLOCK, BRICK_BLOCK, BRICK_BLOCK],
 						[null, null, null,
 							null, null, null,
-							new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), new IngredientVO(IMAGE_PATH + "Stone_Brick.png")]
+							STONE_BRICK, STONE_BRICK, STONE_BRICK]
 						
 						);
 			addRecipe("Stairs",
@@ -357,21 +421,21 @@ package com.jxl.minecraftrecipes
 							STONE_BRICKS_STAIRS,
 							NETHER_BRICK_STAIRS],
 						4,
-						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null, null,
-							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
-							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png")],
-						[new IngredientVO(IMAGE_PATH + "Cobblestone.png"), null, null,
-							new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), null,
-							new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png")],
-						[new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), null, null,
-							new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), null,
-							new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), new IngredientVO(IMAGE_PATH + "Brick_(Block).png"), new IngredientVO(IMAGE_PATH + "Brick_(Block).png")],
-						[new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), null, null,
-							new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), null,
-							new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), new IngredientVO(IMAGE_PATH + "Stone_Brick.png"), new IngredientVO(IMAGE_PATH + "Stone_Brick.png")],
-						[new IngredientVO(IMAGE_PATH + "Nether_Brick.png"), null, null,
-							new IngredientVO(IMAGE_PATH + "Nether_Brick.png"), new IngredientVO(IMAGE_PATH + "Nether_Brick.png"), null,
-							new IngredientVO(IMAGE_PATH + "Nether_Brick.png"), new IngredientVO(IMAGE_PATH + "Nether_Brick.png"), new IngredientVO(IMAGE_PATH + "Nether_Brick.png")]);
+						[WOODEN_PLANK, null, null,
+							WOODEN_PLANK, WOODEN_PLANK, null,
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK],
+						[COBBLESTONE, null, null,
+							COBBLESTONE, COBBLESTONE, null,
+							COBBLESTONE, COBBLESTONE, COBBLESTONE],
+						[BRICK_BLOCK, null, null,
+							BRICK_BLOCK, BRICK_BLOCK, null,
+							BRICK_BLOCK, BRICK_BLOCK, BRICK_BLOCK],
+						[STONE_BRICK, null, null,
+							STONE_BRICK, STONE_BRICK, null,
+							STONE_BRICK, STONE_BRICK, STONE_BRICK],
+						[NETHER_BRICK, null, null,
+							NETHER_BRICK, NETHER_BRICK, null,
+							NETHER_BRICK, NETHER_BRICK, NETHER_BRICK]);
 			
 			addRecipe("Snow Block",
 						"Used as a building material.",
@@ -379,8 +443,8 @@ package com.jxl.minecraftrecipes
 						SNOW_BLOCK,
 						1,
 						[null, null, null,
-							new IngredientVO(IMAGE_PATH + "Snowball.png"), new IngredientVO(IMAGE_PATH + "Snowball.png"), null,
-							new IngredientVO(IMAGE_PATH + "Snowball.png"), new IngredientVO(IMAGE_PATH + "Snowball.png"), null]);
+							SNOWBALL, SNOWBALL, null,
+							SNOWBALL, SNOWBALL, null]);
 			
 			addRecipe("Clay Block",
 					"Used to store Clay Balls, or as a building material.",
@@ -388,8 +452,8 @@ package com.jxl.minecraftrecipes
 					CLAY_BLOCK,
 					1,
 					[null, null, null,
-						new IngredientVO(IMAGE_PATH + "Clay_(Item).png"), new IngredientVO(IMAGE_PATH + "Clay_(Item).png"), null,
-						new IngredientVO(IMAGE_PATH + "Clay_(Item).png"), new IngredientVO(IMAGE_PATH + "Clay_(Item).png"), null]);
+						CLAY, CLAY, null,
+						CLAY, CLAY, null]);
 			
 			addRecipe("Brick (Block)",
 						"Used as a building material.",
@@ -397,8 +461,8 @@ package com.jxl.minecraftrecipes
 						BRICK_BLOCK,
 						1,
 						[null, null, null,
-							new IngredientVO(IMAGE_PATH + "Clay_(Brick).png"), new IngredientVO(IMAGE_PATH + "Clay_(Brick).png"), null,
-							new IngredientVO(IMAGE_PATH + "Clay_(Brick).png"), new IngredientVO(IMAGE_PATH + "Clay_(Brick).png"), null]);
+							CLAY_BRICK, CLAY_BRICK, null,
+							CLAY_BRICK, CLAY_BRICK, null]);
 			
 			addRecipe("Stone Brick",
 						"Used as a building material.",
@@ -406,94 +470,94 @@ package com.jxl.minecraftrecipes
 						STONE_BRICK,
 						4,
 						[null, null, null,
-							new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png"), null,
-							new IngredientVO(IMAGE_PATH + "Stone.png"), new IngredientVO(IMAGE_PATH + "Stone.png"), null]);
+							STONE, STONE, null,
+							STONE, STONE, null]);
 			
 			addRecipe("Bookshelf",
 						"Used as decoration, or to give an Enchantment Table knowledge.",
 						"Wooden Plank + Books",
 						BOOKSHELF,
 						1,
-						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
-							new IngredientVO(IMAGE_PATH + "Book.png"), new IngredientVO(IMAGE_PATH + "Book.png"), new IngredientVO(IMAGE_PATH + "Book.png"), 
-							new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png")]);
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							BOOK, BOOK, BOOK, 
+							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK]);
 			addRecipe("Sandstone",
 						"Used as a building material. Is not influenced by gravity like normal Sand.",
 						"Sand",
 						SANDSTONE,
 						1,
 						[null, null, null,
-							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), null,
-							new IngredientVO(IMAGE_PATH + "Sand.png"), new IngredientVO(IMAGE_PATH + "Sand.png"), null]);
+							SAND, SAND, null,
+							SAND, SAND, null]);
 			
 			
 			addRecipe("Jack-O-Lantern",
 						"Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
 						"Pumpkin + Torch",
-						IMAGE_PATH + "Jack-O-Lantern.png",
+						JACK_O_LANTERN,
 						1,
 						[null, null, null,
-							null, new IngredientVO(IMAGE_PATH + "Pumpkin.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Torch.png"), null]);
+							null, PUMPKIN, null,
+							null, TORCH, null]);
 			
 			addRecipe("Axes",
 					"Used to chop wood-related blocks faster than by hand.",
 					"Sticks + Wooden Plank or Cobblestone or Iron Ingots or Gold Ingots or Diamond Gems",
-					[IMAGE_PATH + "Wooden_Axe.png",
-						IMAGE_PATH + "Stone_Axe.png",
-						IMAGE_PATH + "Iron_Axe.png",
-						IMAGE_PATH + "Gold_Axe.png",
-						IMAGE_PATH + "Diamond_Axe.png"],
+					[WOODEN_AXE,
+						STONE_AXE,
+						IRON_AXE,
+						GOLD_AXE,
+						DIAMOND_AXE],
 					1,
-					[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), null,
-						new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-						null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-					[new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), null,
-						new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-						null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-					[new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), null,
-						new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-						null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-					[new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), null,
-						new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-						null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-					[new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), null,
-						new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null]);
+					[WOODEN_PLANK, WOODEN_PLANK, null,
+						WOODEN_PLANK, STICK, null,
+						null, STICK, null],
+					[COBBLESTONE, COBBLESTONE, null,
+						COBBLESTONE, STICK, null,
+						null, STICK, null],
+					[IRON_INGOT, IRON_INGOT, null,
+						IRON_INGOT, STICK, null,
+						null, STICK, null],
+					[GOLD_INGOT, GOLD_INGOT, null,
+						GOLD_INGOT, STICK, null,
+						null, STICK, null],
+					[DIAMOND_GEM, DIAMOND_GEM, null,
+						DIAMOND_GEM, STICK, null,
+							null, STICK, null]);
 			
 			addRecipe("Pickaxes",
 						"Required to mine stone-related blocks and ore.",
 						"Sticks + Wooden Plank or Cobblestone or Iron Ingots or Gold Ingots or Diamond Gems",
-						[IMAGE_PATH + "Wooden_Pickaxe.png",
-							IMAGE_PATH + "Stone_Pickaxe.png",
-							IMAGE_PATH + "Iron_Pickaxe.png",
-							IMAGE_PATH + "Gold_Pickaxe.png",
-							IMAGE_PATH + "Diamond_Pickaxe.png"],
+						[WOODEN_PICKAXE,
+							STONE_PICKAXE,
+							IRON_PICKAXE,
+							GOLD_PICKAXE,
+							DIAMOND_PICKAXE],
 						1,
-						[new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"), new IngredientVO(IMAGE_PATH + "Wooden_Plank.png"),
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-						[new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"), new IngredientVO(IMAGE_PATH + "Cobblestone.png"),
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-						[new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Iron_(Ingot).png"),
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-						[new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"), new IngredientVO(IMAGE_PATH + "Gold_(Ingot).png"),
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null],
-						[new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"), new IngredientVO(IMAGE_PATH + "Diamond_(Gem).png"),
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null,
-							null, new IngredientVO(IMAGE_PATH + "Stick.png"), null]);
+						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
+							null, STICK, null,
+							null, STICK, null],
+						[COBBLESTONE, COBBLESTONE, COBBLESTONE,
+							null, STICK, null,
+							null, STICK, null],
+						[IRON_INGOT, IRON_INGOT, IRON_INGOT,
+							null, STICK, null,
+							null, STICK, null],
+						[GOLD_INGOT, GOLD_INGOT, GOLD_INGOT,
+							null, STICK, null,
+							null, STICK, null],
+						[DIAMOND_GEM, DIAMOND_GEM, DIAMOND_GEM,
+							null, STICK, null,
+							null, STICK, null]);
 			
 			addRecipe("Shovels",
 						"Used to dig dirt, grass, sand, gravel and snow faster than by hand. Shovels are required to dig snowballs.",
 						"Sticks + Wooden Plank or Cobblestone or Iron Ingots or Gold Ingots or Diamond Gems",
-						[IMAGE_PATH + "Wooden_Shovel.png",
-							IMAGE_PATH + "Stone_Shovel.png",
-							IMAGE_PATH + "Iron_Shovel.png",
-							IMAGE_PATH + "Gold_Shovel.png",
-							IMAGE_PATH + "Diamond_Shovel.png"],
+						[WOODEN_SHOVEL,
+							STONE_SHOVEL,
+							IRON_SHOVEL,
+							GOLD_SHOVEL,
+							DIAMOND_SHOVEL],
 						1,
 						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
 							null, STICK, null,
@@ -514,11 +578,11 @@ package com.jxl.minecraftrecipes
 			addRecipe("Hoes",
 						"Used to till dirt and grass blocks to prepare for crops.",
 						"Sticks + Wooden Plank or Cobblestone or Iron Ingots or Gold Ingots or Diamond Gems",
-						[IMAGE_PATH + "Wooden_Hoe.png",
-							IMAGE_PATH + "Stone_Hoe.png",
-							IMAGE_PATH + "Iron_Hoe.png",
-							IMAGE_PATH + "Gold_Hoe.png",
-							IMAGE_PATH + "Diamond_Hoe.png"],
+						[WOODEN_HOE,
+							STONE_HOE,
+							IRON_HOE,
+							GOLD_HOE,
+							DIAMOND_HOE],
 						1,
 						[WOODEN_PLANK, WOODEN_PLANK, null,
 							null, STICK, null,
@@ -539,7 +603,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Flint and Steel",
 						"Used to create fire.",
 						"Iron Ingot + Flint",
-						IMAGE_PATH + "Flint_and_Steel.png",
+						FLINT_AND_STEEL,
 						1,
 						[null, null, null,
 							IRON_INGOT, null, null,
@@ -548,7 +612,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Bucket",
 						"Used to hold and transport water, lava and milk.",
 						"Iron Ingots",
-						IMAGE_PATH + "Bucket.png",
+						BUCKET,
 						1,
 						[null, null, null,
 							IRON_INGOT, null, IRON_INGOT,
@@ -557,7 +621,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Compass",
 						"Points to the player's spawn point.",
 						"Iron Ingots + Redstone Dust",
-						IMAGE_PATH + "Compass.png",
+						COMPASS,
 						1,
 						[null, IRON_INGOT, null,
 						IRON_INGOT, REDSTONE_DUST, IRON_INGOT,
@@ -566,7 +630,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Maps",
 						"Will create an image of an area explored while held. This can be used for path-finding.",
 						"Paper + Compass",
-						IMAGE_PATH + "Map_(Item).png",
+						MAP,
 						1,
 						[PAPER, PAPER, PAPER,
 							PAPER, COMPASS, PAPER,
@@ -575,7 +639,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Clock",
 						"Displays positions of the Sun and Moon.",
 						"Gold Ingots + Redstone Dust",
-						IMAGE_PATH + "Clock.png",
+						CLOCK,
 						1,
 						[null, GOLD_INGOT, null,
 							GOLD_INGOT, REDSTONE_DUST, GOLD_INGOT,
@@ -584,7 +648,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Fishing Rod",
 						"Used to catch fish. Can also be used to pull mobs and other entities.",
 						"Sticks + String",
-						IMAGE_PATH + "Fishing_Rod.png",
+						FISHING_ROD,
 						1,
 						[null, null, STICK,
 							null, STICK, STRING,
@@ -592,7 +656,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Shears",
 						"Used to collect leaves, tall grass, vines and wool from Sheep. Also breaks Wool faster than by hand.",
 						"Iron Ingots",
-						IMAGE_PATH + "Shears.png",
+						SHEARS,
 						1,
 						[null, null, null,
 							null, IRON_INGOT, null,
@@ -601,11 +665,11 @@ package com.jxl.minecraftrecipes
 			addRecipe("Swords",
 						"Deals mobs more damage than by hand.",
 						"Stick + Wooden Plank or Cobblestone or Iron Ingots or Gold Ingots or Diamond Gems",
-						[IMAGE_PATH + "Wooden_Sword.png",
-							IMAGE_PATH + "Stone_Sword.png",
-							IMAGE_PATH + "Iron_Sword.png",
-							IMAGE_PATH + "Gold_Sword.png",
-							IMAGE_PATH + "Diamond_Sword.png"],
+						[WOODEN_SWORD,
+							STONE_SWORD,
+							IRON_SWORD,
+							GOLD_SWORD,
+							DIAMOND_SWORD],
 						1,
 						[null, WOODEN_PLANK, null,
 							null, WOODEN_PLANK, null,
@@ -626,7 +690,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Bows",
 						"Allows for ranged attacks by using arrows.",
 						"Sticks + String",
-						IMAGE_PATH + "Bow.png",
+						BOW,
 						1,
 						[null, STICK, STRING,
 						STICK, null, STRING,
@@ -635,7 +699,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Arrows",
 						"Used as ammunition for bows.",
 						"Flint + Stick + Feather",
-						IMAGE_PATH + "Arrow.png",
+						ARROW,
 						1,
 						[null, FLINT, null,
 							null, STICK, null,
@@ -744,7 +808,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Minecart",
 						"Used to transport the player or a mob along rails.",
 						"Iron Ingots",
-						IMAGE_PATH + "Minecart.png",
+						MINECART,
 						1,
 						[null, null, null,
 							IRON_INGOT, null, IRON_INGOT,
@@ -753,7 +817,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Powered Minecart",
 						"Used to push other Minecarts along rails using fuel.",
 						"Furnace + Minecart",
-						IMAGE_PATH + "Powered_Minecart.png",
+						POWERED_MINECART,
 						1,
 						[null, null, null,
 							null, FURNACE, null,
@@ -762,7 +826,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Storage Minecart",
 						"Used to transport goods along rails.",
 						"Chest + Minecart",
-						IMAGE_PATH + "Storage_Minecart.png",
+						STORAGE_MINECART,
 						1,
 						[null, null, null,
 							null, CHEST, null,
@@ -771,7 +835,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Rails",
 						"Used to guide minecarts.",
 						"Stick + Iron Ingots",
-						IMAGE_PATH + "Rail.png",
+						RAIL,
 						4,
 						[IRON_INGOT, null, IRON_INGOT,
 							IRON_INGOT, STICK, IRON_INGOT,
@@ -780,7 +844,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Powered Rail",
 						"Used to speed up or brake minecarts.",
 						"Stick + Gold Ingots + Redstone Dust",
-						IMAGE_PATH + "Powered_Rail.png",
+						POWERED_RAIL,
 						4,
 						[GOLD_INGOT, null, GOLD_INGOT,
 							GOLD_INGOT, STICK, GOLD_INGOT, 
@@ -789,7 +853,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Detector Rail",
 						"Functions like a Pressure Plate (sends a Redstone signal when powered) but can only be activated by a minecart.",
 						"Stone Pressure Plate + Iron Ingots + Redstone Dust",
-						IMAGE_PATH + "Detector_Rail.png",
+						DETECTOR_RAIL,
 						4,
 						[IRON_INGOT, null, IRON_INGOT,
 							IRON_INGOT, STONE_PRESSURE_PLATE, IRON_INGOT,
@@ -799,7 +863,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Boat",
 						"Used to travel in water quicker than swimming.",
 						"Wooden Planks",
-						IMAGE_PATH + "Boat.png",
+						BOAT,
 						1,
 						[null, null, null,
 							WOODEN_PLANK, null, WOODEN_PLANK,
@@ -808,8 +872,8 @@ package com.jxl.minecraftrecipes
 			addRecipe("Doors",
 						"Wooden doors are activated by clicking or with redstone. Iron doors are similar but can only be opened by redstone, buttons, or switches.",
 					"Wooden Planks or Iron Ingots",
-					[IMAGE_PATH + "Wooden_Door.png",
-						IMAGE_PATH + "Iron_Door.png"],
+					[WOODEN_DOOR,
+						IRON_DOOR],
 					1,
 					[WOODEN_PLANK, WOODEN_PLANK, null,
 						WOODEN_PLANK, WOODEN_PLANK, null,
@@ -821,7 +885,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Trapdoors",
 						"Trapdoors are activated by clicking, and function as normal doors, but are a 1x1 one block and lay flat on the ground. Can also be activated with redstone.",
 						"Wooden Planks",
-						IMAGE_PATH + "Trapdoor.png",
+						TRAPDOOR,
 						2,
 						[null, null, null, 
 							WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
@@ -830,7 +894,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Pressure Plates",
 						"Used to send an electrical charge when stepped on by a player or a mob. Wooden Pressure Plates can also be activated by dropping something on them.",
 						"Wooden Planks or Stone",
-						IMAGE_PATH + "Pressure_Plate.png",
+						PRESSURE_PLATE,
 						1,
 						[null, null, null,
 							null, null, null,
@@ -842,7 +906,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Stone Button",
 						"Used to send an electrical charge by being pressed. Stays activated for approximately a second before shutting off again.",
 						"Stone",
-						IMAGE_PATH + "Stone_Button.png",
+						STONE_BUTTON,
 						1,
 						[null, null, null,
 							null, STONE, null,
@@ -851,7 +915,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Redstone Torch",
 						"Constantly sends an electrical charge, or can be used as a receiver/transmitter when connected the side of a block. Can also be used for low-level lighting.",
 						"Redstone Dust + Stick",
-						IMAGE_PATH + "Redstone_Torch.png",
+						REDSTONE_TORCH,
 						1,
 						[null, null, null,
 							null, REDSTONE_DUST, null,
@@ -860,7 +924,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Lever",
 						"Used to send an electrical charge by being turned on or off. Stays in on or off state until clicked again.",
 						"Cobblestone + Stick",
-						IMAGE_PATH + "Lever.png",
+						LEVER,
 						1,
 						[null, null, null,
 							null, STICK, null,
@@ -870,7 +934,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Note Block",
 						"Plays a note when triggered. Right click it to change the pitch of the note. Placing this on top of different blocks changes its type of instrument.",
 						"Wooden Planks + Redstone Dust",
-						IMAGE_PATH + "Note_Block.png",
+						NOTE_BLOCK,
 						1,
 						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
 							WOODEN_PLANK, REDSTONE_DUST, WOODEN_PLANK,
@@ -879,7 +943,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Jukebox",
 						"Plays Music Discs.",
 						"Wooden Planks + Diamond Gem",
-						IMAGE_PATH + "Jukebox.png",
+						JUKEBOX,
 						1,
 						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
 							WOODEN_PLANK, DIAMOND_GEM, WOODEN_PLANK,
@@ -888,7 +952,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Dispenser",
 						"Used to hold and shoot out items in a random order when given a Redstone charge.",
 						"Cobblestone + Redstone Dust + Bow",
-						IMAGE_PATH + "Dispenser.png",
+						DISPENSER,
 						1,
 						[COBBLESTONE, COBBLESTONE, COBBLESTONE,
 							COBBLESTONE, BOW, COBBLESTONE,
@@ -897,7 +961,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Redstone Repeater",
 						"Used in redstone circuits as repeater, a delayer, and/or a diode.",
 						"Stone + Redstone Dust + Redstone Torch",
-						IMAGE_PATH + "Redstone_Repeater.png",
+						REDSTONE_REPEATER,
 						1,
 						[null, null, null,
 							REDSTONE_TORCH, REDSTONE_DUST, REDSTONE_TORCH,
@@ -906,7 +970,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Piston",
 						"Pushes blocks and entities.",
 						"Cobblestone + Redstone Dust + Wooden Planks + Iron Ingot",
-						IMAGE_PATH + "Piston.png",
+						PISTON,
 						1,
 						[WOODEN_PLANK, WOODEN_PLANK, WOODEN_PLANK,
 							COBBLESTONE, IRON_INGOT, COBBLESTONE,
@@ -915,7 +979,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Sticky Piston",
 						"Pushes blocks and entities, and will pull back the block next to the end when retracted.",
 						"Piston + Slimeball",
-						IMAGE_PATH + "Sticky_Piston.png",
+						STICK_PISTON,
 						1,
 						[null, null, null,
 							null, SLIMEBALL, null,
@@ -924,7 +988,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Bowls",
 						"Used to hold mushroom stew. The player keeps the bowl when they eat the stew. Also used to milk a Mooshroom.",
 						"Wooden Planks",
-						IMAGE_PATH + "Bowl.png",
+						BOWL,
 						4,
 						[null, null, null,
 							WOODEN_PLANK, null, WOODEN_PLANK,
@@ -932,7 +996,8 @@ package com.jxl.minecraftrecipes
 			
 			addRecipe("Mushroom Stew",
 						"Restores 4. Bowl is re-usable.",
-						IMAGE_PATH + "Stew.png",
+						"Red Mushroom + Brown Mushroom + Bowl",
+						STEW,
 						1,
 						[null, BROWN_MUSHROOM, null,
 							null, RED_MUSHROOM, null,
@@ -944,7 +1009,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Bread",
 						"Restores 3.",
 						"Wheat",
-						IMAGE_PATH + "Bread.png",
+						BREAD,
 						1,
 						[null, null, null,
 							null, null, null,
@@ -1459,6 +1524,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Glistering Melon",
 						"Used in Brewing to create health restoration Potions.",
 						"Melon Slice + Gold Nugget",
+						GLISTERING_MELON,
 						1,
 						[null, null, null,
 							MELON_SLICE, GOLD_NUGGET, null,
@@ -1481,8 +1547,6 @@ package com.jxl.minecraftrecipes
 						[null, BOOK, null,
 							DIAMOND_GEM, OBSIDIAN, DIAMOND_GEM,
 							OBSIDIAN, OBSIDIAN, OBSIDIAN]);
-			
-			return true;
 		}
 		
 	}

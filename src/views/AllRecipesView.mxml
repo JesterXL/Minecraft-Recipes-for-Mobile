@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="AllRecipesView"
+		xmlns:s="library://ns.adobe.com/flex/spark" title="All Recipes"
 		creationComplete="init()">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
@@ -8,13 +8,10 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import assets.images.Icons;
 			
 			import com.jxl.minecraftrecipes.Constants;
 			
 			import mx.collections.ArrayCollection;
-			
-			private var depend:Icons;
 			
 			[Bindable]
 			public var allData:ArrayCollection;
@@ -42,9 +39,16 @@
 			<fx:Component>
 				<s:IconItemRenderer 
 					label="{data.title}"
-					decorator="{data.images[0]}"
+					decorator="{data.images[0].image}"
 					iconScaleMode="letterbox"
-					/>
+					>
+					<fx:Script>
+						<![CDATA[
+							import com.jxl.minecraftrecipes.vo.IngredientVO;
+						]]>
+					</fx:Script>
+				</s:IconItemRenderer>
+
 			</fx:Component>
 		</s:itemRenderer>
 	</s:List>

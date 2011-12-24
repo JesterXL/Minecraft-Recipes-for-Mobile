@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="RecipeView"
+		xmlns:s="library://ns.adobe.com/flex/spark"
 		creationComplete="init()"
-		removing="onRemoving()">
+		removing="onRemoving()" 
+		xmlns:controls="com.jxl.minecraftrecipes.controls.*">
 	
 	<fx:Script>
 		<![CDATA[
+			import com.jxl.minecraftrecipes.events.RecipeViewEvent;
 			import com.jxl.minecraftrecipes.vo.IngredientVO;
 			import com.jxl.minecraftrecipes.vo.RecipeVO;
 			
@@ -39,6 +41,9 @@
 					var image:Image;
 					if(_recipe)	
 					{
+						title = _recipe.title;
+						descriptionLabel.text = _recipe.description;
+						
 						if(_recipe.images.length > 1)
 						{
 							currentImage = 0;
@@ -148,12 +153,21 @@
 				imageTimer.stop();
 			}
 			
+			private function onClick():void
+			{
+				dispatchEvent(new RecipeViewEvent(RecipeViewEvent.ADD_TO_FAVORITES));
+			}
+			
 		]]>
 	</fx:Script>
 	
 	<s:navigationContent>
 		<s:Button label="&lt;&lt; Back" click="navigator.popView()" />
 	</s:navigationContent>
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" />
+	</s:layout>
 	
 	<s:Group>
 		<s:Image source="@Embed(source='/assets/images/Grid.png')"
@@ -204,4 +218,9 @@
 				 scaleMode="letterbox"/>
 				
 	</s:Group>
+	<s:Spacer height="22" />
+	<s:Label id="descriptionLabel" maxWidth="400" width="100%" />
+	<s:Spacer height="22" />
+	<controls:AddToFavoritesButton id="addToFavoritesButton" click="onClick();" />
+	
 </s:View>
