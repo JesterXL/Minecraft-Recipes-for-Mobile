@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="HomeView"
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Recipes"
 		creationComplete="init();">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
@@ -8,8 +8,9 @@
 	
 	<fx:Script>
 		<![CDATA[
-			
 			import mx.collections.ArrayCollection;
+			
+			import spark.events.IndexChangeEvent;
 			
 			[Bindable]
 			public var listData:ArrayCollection;
@@ -19,17 +20,35 @@
 				listData = new ArrayCollection();
 				listData.addItem("All");
 				listData.addItem("Favorites");
-				listData.addItem("Types");
-				listData.addItem("Materials");
+				//listData.addItem("Types");
+				//listData.addItem("Materials");
 			}
 			
-			private function onItemSelected():void
+			private function onItemSelected(event:IndexChangeEvent):void
 			{
-				navigator.pushView(AllRecipesView, mainList.selectedItem);
+				switch(event.newIndex)
+				{
+					case 0:
+						navigator.pushView(AllRecipesView, mainList.selectedItem);
+						break;
+						
+					case 1:
+						navigator.pushView(FavoritesRecipeView, mainList.selectedItem);
+						break;
+					
+					case 2:
+
+						break;
+					
+					case 3:
+						
+						break;
+				}
+				
 			}
 			
 		]]>
 	</fx:Script>
 	
-	<s:List id="mainList" dataProvider="{listData}" width="100%" height="100%" click="onItemSelected()" />
+	<s:List id="mainList" dataProvider="{listData}" width="100%" height="100%" change="onItemSelected(event)" />
 </s:View>

@@ -1,11 +1,13 @@
 package com.jxl.minecraftrecipes.rl
 {
+	import com.jxl.minecraftrecipes.rl.mediators.FavoritesRecipeViewMediator;
 	import com.jxl.minecraftrecipes.rl.mediators.RecipeViewMediator;
 	
 	import flash.display.DisplayObjectContainer;
 	
 	import org.robotlegs.mvcs.Context;
 	
+	import views.FavoritesRecipeView;
 	import views.RecipeView;
 	
 	public class MainContext extends Context
@@ -20,6 +22,7 @@ package com.jxl.minecraftrecipes.rl
 			this.injector.mapSingleton(FavoritesModel);
 			
 			mediatorMap.mapView(RecipeView, RecipeViewMediator);
+			mediatorMap.mapView(FavoritesRecipeView, FavoritesRecipeViewMediator);
 			
 			super.startup();
 		}

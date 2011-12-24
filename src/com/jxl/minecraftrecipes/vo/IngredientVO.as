@@ -4,7 +4,7 @@ package com.jxl.minecraftrecipes.vo
 	{
 		public var image:String;
 		
-		public function IngredientVO(image:String)
+		public function IngredientVO(image:String="")
 		{
 			this.image = image;
 		}

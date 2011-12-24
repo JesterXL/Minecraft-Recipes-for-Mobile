@@ -4,12 +4,12 @@ package com.jxl.minecraftrecipes
 	import com.jxl.minecraftrecipes.vo.RecipeVO;
 	
 	import flash.debugger.enterDebugger;
+	import flash.net.registerClassAlias;
 	
 	import mx.collections.ArrayCollection;
 
 	public class Constants
 	{
-		
 		public static var allRecipes:ArrayCollection;
 		public static const IMAGE_PATH:String = "/assets/images/";
 		private static var initialized:Boolean = false;
@@ -332,7 +332,7 @@ package com.jxl.minecraftrecipes
 			addRecipe("Ore Blocks",
 						"Stores blocks and items inside. Place two chests side by side to create a larger chest with double the capacity.",
 						"",
-						[LAPIS_LAZULI_BLOCK,,
+						[LAPIS_LAZULI_BLOCK,
 							GOLD_BLOCK,
 							IRON_BLOCK,
 							DIAMOND_BLOCK],

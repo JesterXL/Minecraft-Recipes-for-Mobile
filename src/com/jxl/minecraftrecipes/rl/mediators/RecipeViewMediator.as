@@ -46,7 +46,7 @@ package com.jxl.minecraftrecipes.rl.mediators
 		{
 			if(model.favorites.contains(recipe) == false)
 			{
-				model.favorites.addItem(recipe);
+				model.addRecipe(recipe);
 				view.addToFavoritesButton.favorite = true;
 			}
 			else

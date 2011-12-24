@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
-							xmlns:s="library://ns.adobe.com/flex/spark" firstView="views.MinecraftRecipesHomeView" applicationDPI="320" xmlns:rl="com.jxl.minecraftrecipes.rl.*">
+							xmlns:s="library://ns.adobe.com/flex/spark" 
+							firstView="views.MinecraftRecipesHomeView" 
+							applicationDPI="320" 
+							xmlns:rl="com.jxl.minecraftrecipes.rl.*"
+							initialize="init()">
 	<fx:Declarations>
 		<rl:MainContext contextView="{this}" />
 	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.jxl.minecraftrecipes.vo.IngredientVO;
+			import com.jxl.minecraftrecipes.vo.RecipeVO;
+			
+			import flash.net.registerClassAlias;
+			
+			private function init():void
+			{
+				registerClassAlias("com.jxl.minecraftrecipes.vo.IngredientVO", IngredientVO);
+				registerClassAlias("com.jxl.minecraftrecipes.vo.RecipeVO", RecipeVO);
+			}
+		]]>
+	</fx:Script>
 	
 	
 </s:ViewNavigatorApplication>
