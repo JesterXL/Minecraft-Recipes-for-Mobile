@@ -4,10 +4,13 @@
 							firstView="views.MinecraftRecipesHomeView" 
 							applicationDPI="320" 
 							xmlns:rl="com.jxl.minecraftrecipes.rl.*"
-							initialize="init()">
+							initialize="init()"
+							addedToStage="onAdded()">
 	<fx:Declarations>
 		<rl:MainContext contextView="{this}" />
 	</fx:Declarations>
+	
+	<!-- TODO: show last 4 favorites -->
 	
 	<fx:Script>
 		<![CDATA[
@@ -20,6 +23,16 @@
 			{
 				registerClassAlias("com.jxl.minecraftrecipes.vo.IngredientVO", IngredientVO);
 				registerClassAlias("com.jxl.minecraftrecipes.vo.RecipeVO", RecipeVO);
+			}
+			
+			private function onAdded():void
+			{
+				this.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onGlobalError);
+			}
+			
+			private function onGlobalError(event:UncaughtErrorEvent):void
+			{
+				trace("Error: " + event);
 			}
 		]]>
 	</fx:Script>

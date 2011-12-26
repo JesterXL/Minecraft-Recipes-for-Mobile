@@ -8,6 +8,8 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import flash.net.navigateToURL;
+			
 			import mx.collections.ArrayCollection;
 			
 			import spark.events.IndexChangeEvent;
@@ -18,8 +20,8 @@
 			private function init():void
 			{
 				listData = new ArrayCollection();
-				listData.addItem("All");
-				listData.addItem("Favorites");
+				listData.addItem("View All");
+				listData.addItem("View Favorites");
 				//listData.addItem("Types");
 				//listData.addItem("Materials");
 			}
@@ -47,8 +49,50 @@
 				
 			}
 			
+			private function onNavigate():void
+			{
+				try
+				{
+					navigateToURL(new URLRequest("http://www.minecraftwiki.net/"));
+				} 
+				catch(err:Error) 
+				{
+					trace("onNavigate, error: " + err);	
+				}
+			}
+			
+			private function onNavigateToJXL():void
+			{
+				try
+				{
+					navigateToURL(new URLRequest("http://www.jessewarden.com/"));
+				} 
+				catch(err:Error) 
+				{
+					trace("onNavigateToJXL, error: " + err);	
+				}
+			}
+			
 		]]>
 	</fx:Script>
 	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" />
+	</s:layout>
+	
 	<s:List id="mainList" dataProvider="{listData}" width="100%" height="100%" change="onItemSelected(event)" />
+	
+	<s:Image source="@Embed(source='assets/images/Minecraft-Wiki-Logo.png')" 
+				 click="onNavigate()"
+				 />
+	<s:Label text="All content copyright/owned by" width="100%" textAlign="center"/>
+	<s:Button label="minecraftwiki.net."
+			  skinClass="com.jxl.minecraftrecipes.controls.LinkSkin"
+			 click="onNavigate()"/>
+	<s:Spacer height="22" />
+	<s:Label text="Developed by " width="100%" textAlign="center" />
+	<s:Button label="jessewarden.com" click="onNavigateToJXL()" skinClass="com.jxl.minecraftrecipes.controls.LinkSkin" />
+	<s:Spacer height="44" />
+	
+	
 </s:View>

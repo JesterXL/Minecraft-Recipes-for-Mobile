@@ -166,8 +166,10 @@
 	</s:navigationContent>
 	
 	<s:layout>
-		<s:VerticalLayout horizontalAlign="center" />
+		<s:VerticalLayout horizontalAlign="left" paddingLeft="22" />
 	</s:layout>
+	
+	<s:Spacer height="22" />
 	
 	<s:Group>
 		<s:Image source="@Embed(source='/assets/images/Grid.png')"
